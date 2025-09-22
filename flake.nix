@@ -9,27 +9,22 @@
 
   outputs = { self, nixpkgs, home-manager, ... }:
     let
-      system = "x86_64-linux"; # Docker base is x86_64 even on M1
+      system = "x86_64-linux"; # docker base, even on M1
     in {
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          ({ pkgs, ... }: {
-            # Minimal NixOS base
-            services.getty.autologin = {
-              enable = true;
-              user = "dev";
-            };
+          {
+            system.stateVersion = "24.05"; # REQUIRED
+            nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
             users.users.dev = {
               isNormalUser = true;
               extraGroups = [ "wheel" ];
               initialPassword = "dev";
             };
+          }
 
-            # Enable flakes
-            nix.settings.experimental-features = [ "nix-command" "flakes" ];
-          })
           home-manager.nixosModules.home-manager
           {
             home-manager.useUserPackages = true;
