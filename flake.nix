@@ -1,0 +1,42 @@
+{
+  description = "Minimal NixOS + Home Manager flake";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+  };
+
+  outputs = { self, nixpkgs, home-manager, ... }:
+    let
+      system = "x86_64-linux"; # Docker base is x86_64 even on M1
+    in {
+      nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ({ pkgs, ... }: {
+            # Minimal NixOS base
+            services.getty.autologin = {
+              enable = true;
+              user = "dev";
+            };
+
+            users.users.dev = {
+              isNormalUser = true;
+              extraGroups = [ "wheel" ];
+              initialPassword = "dev";
+            };
+
+            # Enable flakes
+            nix.settings.experimental-features = [ "nix-command" "flakes" ];
+          })
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useUserPackages = true;
+            home-manager.useGlobalPkgs = true;
+            home-manager.users.dev = import ./home.nix;
+          }
+        ];
+      };
+    };
+}
