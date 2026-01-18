@@ -16,6 +16,8 @@
     pkgs.starship
     pkgs.fzf
     pkgs.eza
+    pkgs.yazi
+    pkgs.lazygit
   ];
 
   programs.fzf = {
