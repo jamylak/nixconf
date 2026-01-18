@@ -9,6 +9,7 @@
   # Example: install neovim
   home.packages = [
     pkgs.neovim
+    pkgs.gnumake
   ];
 
   home.file.".config/nvim".source = nvimconf;
