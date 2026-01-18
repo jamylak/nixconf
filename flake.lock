@@ -1,0 +1,82 @@
+{
+  "nodes": {
+    "dotfiles": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768721106,
+        "narHash": "sha256-sK0eSisw/xw/aQOtU17tbaXouE6tVgmFtjwR8t+kd5c=",
+        "owner": "jamylak",
+        "repo": "dotfiles",
+        "rev": "6258fca71e0efff4f0252c8ec04b687e6b0e1477",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jamylak",
+        "repo": "dotfiles",
+        "type": "github"
+      }
+    },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1768707181,
+        "narHash": "sha256-GdwFfnwdUgABFpc4sAmX7GYx8eQs6cEjOPo6nBJ0YaI=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "83bcb17377f0242376a327e742e9404e9a528647",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1768564909,
+        "narHash": "sha256-Kell/SpJYVkHWMvnhqJz/8DqQg2b6PguxVWOuadbHCc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "e4bae1bd10c9c57b2cf517953ab70060a828ee6f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nvimconf": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768719646,
+        "narHash": "sha256-VhCCKpe/0afe0becWOboxWz2NapV/qRItF6lUSumXbQ=",
+        "owner": "jamylak",
+        "repo": "nvimconf",
+        "rev": "7db51531185d3d86242f0b97abada194e7cc9555",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jamylak",
+        "repo": "nvimconf",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "dotfiles": "dotfiles",
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs",
+        "nvimconf": "nvimconf"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
