@@ -10,6 +10,7 @@
   outputs = { self, nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux"; # docker base, even on M1
+      pkgs = import nixpkgs { inherit system; };
     in {
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
         inherit system;
@@ -31,6 +32,13 @@
             home-manager.useGlobalPkgs = true;
             home-manager.users.dev = import ./home.nix;
           }
+        ];
+      };
+
+      homeConfigurations.dev = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./home.nix
         ];
       };
     };

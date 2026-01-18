@@ -1,6 +1,6 @@
 # nixconf
 ## Build
-Run (build validates the flake):
+Run (build validates Home Manager config):
 
 ```sh
 docker build -t nixos-test .

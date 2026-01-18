@@ -8,8 +8,8 @@ WORKDIR /workspace
 
 COPY . .
 
-# Build minimal system closure (sanity check)
-RUN nix build .#nixosConfigurations.minimal.config.system.build.toplevel
+# Build Home Manager activation (sanity check)
+RUN nix build .#homeConfigurations.dev.activationPackage
 
-# Default to a quick build so `docker run` re-validates the flake
-CMD [ "nix", "build", ".#nixosConfigurations.minimal.config.system.build.toplevel" ]
+# Default to a quick build so `docker run` validates Home Manager config
+CMD [ "nix", "build", ".#homeConfigurations.dev.activationPackage" ]
