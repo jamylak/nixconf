@@ -9,7 +9,7 @@ WORKDIR /workspace
 COPY . .
 
 # Build Home Manager activation (sanity check)
-RUN nix build .#homeConfigurations.dev.activationPackage
+RUN nix build --impure .#homeConfigurations.dev.activationPackage
 
 # Default to a quick build so `docker run` validates Home Manager config
-CMD [ "nix", "build", ".#homeConfigurations.dev.activationPackage" ]
+CMD [ "nix", "build", "--impure", ".#homeConfigurations.dev.activationPackage" ]

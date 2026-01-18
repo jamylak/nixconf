@@ -77,11 +77,11 @@ WORKDIR /workspace
 
 COPY . .
 
-# Build minimal system closure (sanity check)
-RUN nix build .#nixosConfigurations.minimal.config.system.build.toplevel
+# Build Home Manager activation (sanity check)
+RUN nix build --impure .#homeConfigurations.dev.activationPackage
 
 # Default to a quick build so `docker run` validates Home Manager config
-CMD [ "nix", "build", ".#homeConfigurations.dev.activationPackage" ]
+CMD [ "nix", "build", "--impure", ".#homeConfigurations.dev.activationPackage" ]
 EOF
 
 echo "Repo created in $(pwd). Run 'docker build -t nixos-test .' then 'docker run -it nixos-test nvim'."
