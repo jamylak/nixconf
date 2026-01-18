@@ -29,8 +29,12 @@ COPY . .
 
 # Build the Home Manager activation package (sanity check)
 RUN nix build --impure .#homeConfigurations.dev.activationPackage
+# Activate during build as root while targeting the dev home
+RUN ./result/activate
+# Fix ownership so dev can use the home/profile
+RUN chown -R 1000:1000 /home/dev /nix/var/nix/profiles/per-user/dev
 
-# Run as the dev user for activation and shell
+# Run as the dev user for the shell
 USER dev
-# Activate the already-built Home Manager generation, load session vars, then drop into a shell
-CMD [ "sh", "-lc", "./result/activate && . /home/dev/.nix-profile/etc/profile.d/hm-session-vars.sh && exec sh" ]
+# Load Home Manager session vars, then drop into a shell
+CMD [ "sh", "-lc", ". /home/dev/.nix-profile/etc/profile.d/hm-session-vars.sh && exec sh" ]
