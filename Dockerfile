@@ -6,6 +6,8 @@ RUN mkdir -p /etc/nix && \
 
 RUN mkdir -p /home/dev
 ENV HOME=/home/dev
+ENV USER=dev
+ENV LOGNAME=dev
 
 WORKDIR /workspace
 
