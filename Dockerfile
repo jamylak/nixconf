@@ -16,6 +16,9 @@ RUN mkdir -p /home/dev && \
 ENV HOME=/home/dev
 ENV USER=dev
 ENV LOGNAME=dev
+ENV NIX_PROFILE=/nix/var/nix/profiles/per-user/dev/profile
+ENV NIX_PROFILES=/nix/var/nix/profiles/per-user/dev/profile
+ENV PATH=/home/dev/.nix-profile/bin:/home/dev/.nix-profile/sbin:/nix/var/nix/profiles/default/bin:/nix/var/nix/profiles/default/sbin
 # Create profile dirs Home Manager expects and grant ownership
 RUN mkdir -p /home/dev/.local/state/nix/profiles \
     /nix/var/nix/profiles/per-user/dev && \
@@ -29,10 +32,13 @@ COPY . .
 
 # Build the Home Manager activation package (sanity check)
 RUN nix build --impure .#homeConfigurations.dev.activationPackage
-# Activate during build as root while targeting the dev home
-RUN ./result/activate
-# Fix ownership so dev can use the home/profile
-RUN chown -R 1000:1000 /home/dev /nix/var/nix/profiles/per-user/dev
+# Activate during build as root while targeting the dev home/profile
+RUN chown -R root:root /home/dev /nix/var/nix/profiles/per-user/dev && \
+    ./result/activate && \
+    ln -sfn /nix/var/nix/profiles/per-user/dev/profile /home/dev/.nix-profile && \
+    chown -R 1000:1000 /home/dev /nix/var/nix/profiles/per-user/dev
+# Fail fast if neovim isn't in the dev profile
+RUN test -x /nix/var/nix/profiles/per-user/dev/profile/bin/nvim
 
 # Run as the dev user for the shell
 USER dev
