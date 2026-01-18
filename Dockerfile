@@ -32,5 +32,5 @@ RUN nix build --impure .#homeConfigurations.dev.activationPackage
 
 # Run as the dev user for activation and shell
 USER dev
-# Build + activate at runtime, load session vars, then drop into a shell
-CMD [ "sh", "-lc", "nix build --impure .#homeConfigurations.dev.activationPackage && ./result/activate && . /home/dev/.nix-profile/etc/profile.d/hm-session-vars.sh && exec sh" ]
+# Activate the already-built Home Manager generation, load session vars, then drop into a shell
+CMD [ "sh", "-lc", "./result/activate && . /home/dev/.nix-profile/etc/profile.d/hm-session-vars.sh && exec sh" ]
