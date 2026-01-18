@@ -30,7 +30,14 @@ Inside the container, allow Git access to the mounted repo, then rebuild and act
 ```sh
 git config --global --add safe.directory /workspace
 cd /workspace
+nix flake update --update-input nixpkgs --update-input home-manager --update-input nvimconf --update-input dotfiles
+HOME=/home/dev USER=dev LOGNAME=dev \
+NIX_PROFILE=/nix/var/nix/profiles/per-user/dev/profile \
+NIX_PROFILES=/nix/var/nix/profiles/per-user/dev/profile \
 nix build --impure .#homeConfigurations.dev.activationPackage
+HOME=/home/dev USER=dev LOGNAME=dev \
+NIX_PROFILE=/nix/var/nix/profiles/per-user/dev/profile \
+NIX_PROFILES=/nix/var/nix/profiles/per-user/dev/profile \
 ./result/activate
 . /home/dev/.nix-profile/etc/profile.d/hm-session-vars.sh
 exec /home/dev/.nix-profile/bin/fish
