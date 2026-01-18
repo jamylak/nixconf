@@ -86,6 +86,8 @@ RUN mkdir -p /home/dev
 ENV HOME=/home/dev
 ENV USER=dev
 ENV LOGNAME=dev
+RUN mkdir -p /home/dev/.local/state/nix/profiles \
+    /nix/var/nix/profiles/per-user/dev
 
 WORKDIR /workspace
 
