@@ -25,6 +25,7 @@
   home.file.".config/nvim".source = nvimconf;
 
   xdg.configFile."fish/config.fish".source = "${dotfiles}/fish/config.fish";
+  xdg.configFile."fish/conf.d/fzf.fish".source = "${pkgs.fzf}/share/fish/vendor_conf.d/fzf.fish";
   xdg.configFile."alacritty".source = "${dotfiles}/alacritty";
   xdg.configFile."kitty".source = "${dotfiles}/kitty";
   xdg.configFile."ghostty".source = "${dotfiles}/ghostty";
