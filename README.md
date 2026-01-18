@@ -6,14 +6,29 @@ Run (build validates Home Manager config):
 docker build -t nixos-test .
 ```
 
-Optional re-check + activation in a fresh container (drops into a shell):
+Optional re-check + activation in a fresh container (drops into fish):
 
 ```sh
 docker run --rm -it nixos-test
 
-To poke around inside the container:
+To poke around inside the container (fish):
 
 ```sh
-docker run --rm -it --entrypoint sh nixos-test
+docker run --rm -it --entrypoint sh nixos-test -lc ". /home/dev/.nix-profile/etc/profile.d/hm-session-vars.sh && exec /home/dev/.nix-profile/bin/fish"
+```
+
+Live edit + refresh without rebuilding the image (fish):
+
+```sh
+docker run --rm -it -v "$PWD":/workspace --entrypoint sh nixos-test -lc "exec /home/dev/.nix-profile/bin/fish"
+```
+
+Inside the container (after activation, fish will be on PATH):
+
+```sh
+cd /workspace
+nix build --impure .#homeConfigurations.dev.activationPackage
+./result/activate
+. /home/dev/.nix-profile/etc/profile.d/hm-session-vars.sh
 ```
 ```
