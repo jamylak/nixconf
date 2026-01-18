@@ -15,6 +15,7 @@
     pkgs.fish
     pkgs.starship
     pkgs.fzf
+    pkgs.eza
   ];
 
   programs.fzf = {
