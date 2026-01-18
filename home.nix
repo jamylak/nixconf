@@ -1,4 +1,4 @@
-{ pkgs, nvimconf, dotfiles, ... }: {
+{ pkgs, nvimconf, dotfiles, fzf-fish, ... }: {
   home.username = "dev";
   home.homeDirectory = "/home/dev";
 
@@ -26,9 +26,8 @@
   home.file.".config/nvim".source = nvimconf;
 
   xdg.configFile."fish/config.fish".source = "${dotfiles}/fish/config.fish";
-  xdg.configFile."fish/conf.d/fzf.fish".source = "${pkgs.fzf}/share/fish/vendor_conf.d/fzf.fish";
-  xdg.configFile."fish/functions/fzf_configure_bindings.fish".source =
-    "${pkgs.fzf}/share/fish/vendor_functions.d/fzf_configure_bindings.fish";
+  xdg.configFile."fish/conf.d".source = "${fzf-fish}/conf.d";
+  xdg.configFile."fish/functions".source = "${fzf-fish}/functions";
   xdg.configFile."alacritty".source = "${dotfiles}/alacritty";
   xdg.configFile."kitty".source = "${dotfiles}/kitty";
   xdg.configFile."ghostty".source = "${dotfiles}/ghostty";

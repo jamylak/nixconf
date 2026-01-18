@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "fzf-fish": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1712464035,
+        "narHash": "sha256-T8KYLA/r/gOKvAivKRoeqIwE2pINlxFQtZJHpOy9GMM=",
+        "owner": "PatrickF1",
+        "repo": "fzf.fish",
+        "rev": "8920367cf85eee5218cc25a11e209d46e2591e7a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "PatrickF1",
+        "repo": "fzf.fish",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -71,6 +87,7 @@
     "root": {
       "inputs": {
         "dotfiles": "dotfiles",
+        "fzf-fish": "fzf-fish",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nvimconf": "nvimconf"

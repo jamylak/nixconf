@@ -13,9 +13,13 @@
       url = "github:jamylak/dotfiles";
       flake = false;
     };
+    fzf-fish = {
+      url = "github:PatrickF1/fzf.fish";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nvimconf, dotfiles, ... }:
+  outputs = { self, nixpkgs, home-manager, nvimconf, dotfiles, fzf-fish, ... }:
     let
       system = builtins.currentSystem;
       pkgs = import nixpkgs { inherit system; };
@@ -54,6 +58,7 @@
         extraSpecialArgs = {
           inherit nvimconf;
           inherit dotfiles;
+          inherit fzf-fish;
         };
       };
     };
