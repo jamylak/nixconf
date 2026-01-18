@@ -1,6 +1,6 @@
-{ pkgs, nvimconf, dotfiles, fzf-fish, ... }: {
-  home.username = "dev";
-  home.homeDirectory = "/home/dev";
+{ pkgs, lib, nvimconf, dotfiles, fzf-fish, ... }: {
+  home.username = lib.mkDefault "dev";
+  home.homeDirectory = lib.mkDefault "/home/dev";
 
   home.stateVersion = "24.05";
 

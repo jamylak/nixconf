@@ -21,44 +21,51 @@
 
   outputs = { self, nixpkgs, home-manager, nvimconf, dotfiles, fzf-fish, ... }:
     let
-      system = builtins.currentSystem;
-      pkgs = import nixpkgs { inherit system; };
+      mkPkgs = system: import nixpkgs { inherit system; };
+      hmArgs = {
+        inherit nvimconf;
+        inherit dotfiles;
+        inherit fzf-fish;
+      };
+      mkHome = { system, homeModule }:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = mkPkgs system;
+          modules = [
+            ./home.nix
+            homeModule
+          ];
+          extraSpecialArgs = hmArgs;
+        };
     in {
-      nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
-          {
-            system.stateVersion = "24.05"; # REQUIRED
-            nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-            users.users.dev = {
-              isNormalUser = true;
-              extraGroups = [ "wheel" ];
-              initialPassword = "dev";
-            };
-          }
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useUserPackages = true;
-            home-manager.useGlobalPkgs = true;
-            home-manager.extraSpecialArgs = {
-              inherit nvimconf;
-            };
-            home-manager.users.dev = import ./home.nix;
-          }
-        ];
+      nixosConfigurations = {
+        dell = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            home-manager.nixosModules.home-manager
+            ./hosts/nixos-common.nix
+            ./hosts/dell.nix
+          ];
+          specialArgs = hmArgs;
+        };
+        vmware = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            home-manager.nixosModules.home-manager
+            ./hosts/nixos-common.nix
+            ./hosts/vmware.nix
+          ];
+          specialArgs = hmArgs;
+        };
       };
 
-      homeConfigurations.dev = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./home.nix
-        ];
-        extraSpecialArgs = {
-          inherit nvimconf;
-          inherit dotfiles;
-          inherit fzf-fish;
+      homeConfigurations = {
+        docker = mkHome {
+          system = "x86_64-linux";
+          homeModule = ./hosts/home-docker.nix;
+        };
+        mac = mkHome {
+          system = "aarch64-darwin";
+          homeModule = ./hosts/home-mac.nix;
         };
       };
     };

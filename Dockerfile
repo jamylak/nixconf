@@ -31,7 +31,7 @@ WORKDIR /workspace
 COPY . .
 
 # Build the Home Manager activation package (sanity check)
-RUN nix build --impure .#homeConfigurations.dev.activationPackage
+RUN nix build --impure .#homeConfigurations.docker.activationPackage
 # Activate during build as root while targeting the dev home/profile
 RUN chown -R root:root /home/dev /nix/var/nix/profiles/per-user/dev && \
     ./result/activate && \

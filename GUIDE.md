@@ -29,7 +29,7 @@ Inside the container:
 git config --global --add safe.directory /workspace
 cd /workspace
 nix flake lock --update-input nixpkgs --update-input home-manager --update-input nvimconf --update-input dotfiles
-nix build --impure .#homeConfigurations.dev.activationPackage
+nix build --impure .#homeConfigurations.docker.activationPackage
 ./result/activate
 . /home/dev/.nix-profile/etc/profile.d/hm-session-vars.sh
 exec /home/dev/.nix-profile/bin/fish

@@ -6,6 +6,10 @@ Run (build validates Home Manager config):
 docker build -t nixos-test .
 ```
 
+## Hosts
+
+See ./hosts/README.md
+
 Optional re-check + activation in a fresh container (drops into fish):
 
 ```sh
@@ -27,7 +31,7 @@ Inside the container (after activation, fish will be on PATH):
 
 ```sh
 cd /workspace
-nix build --impure .#homeConfigurations.dev.activationPackage
+nix build --impure .#homeConfigurations.docker.activationPackage
 ./result/activate
 . /home/dev/.nix-profile/etc/profile.d/hm-session-vars.sh
 ```
