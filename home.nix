@@ -17,6 +17,11 @@
     pkgs.fzf
   ];
 
+  programs.fzf = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
   home.file.".config/nvim".source = nvimconf;
 
   xdg.configFile."fish/config.fish".source = "${dotfiles}/fish/config.fish";
