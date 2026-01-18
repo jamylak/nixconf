@@ -9,7 +9,7 @@
 
   outputs = { self, nixpkgs, home-manager, ... }:
     let
-      system = "x86_64-linux"; # docker base, even on M1
+      system = builtins.currentSystem;
       pkgs = import nixpkgs { inherit system; };
     in {
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
