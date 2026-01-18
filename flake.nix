@@ -9,9 +9,13 @@
       url = "github:jamylak/nvimconf";
       flake = false;
     };
+    dotfiles = {
+      url = "github:jamylak/dotfiles";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nvimconf, ... }:
+  outputs = { self, nixpkgs, home-manager, nvimconf, dotfiles, ... }:
     let
       system = builtins.currentSystem;
       pkgs = import nixpkgs { inherit system; };
@@ -49,6 +53,7 @@
         ];
         extraSpecialArgs = {
           inherit nvimconf;
+          inherit dotfiles;
         };
       };
     };

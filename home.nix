@@ -1,4 +1,4 @@
-{ pkgs, nvimconf, ... }: {
+{ pkgs, nvimconf, dotfiles, ... }: {
   home.username = "dev";
   home.homeDirectory = "/home/dev";
 
@@ -15,4 +15,14 @@
   ];
 
   home.file.".config/nvim".source = nvimconf;
+
+  xdg.configFile."fish/config.fish".source = "${dotfiles}/fish/config.fish";
+  xdg.configFile."alacritty".source = "${dotfiles}/alacritty";
+  xdg.configFile."kitty".source = "${dotfiles}/kitty";
+  xdg.configFile."ghostty".source = "${dotfiles}/ghostty";
+  xdg.configFile."helix".source = "${dotfiles}/helix";
+  xdg.configFile."yazi".source = "${dotfiles}/yazi";
+  xdg.configFile."btop/btop.conf".source = "${dotfiles}/btop/btop.conf";
+  xdg.configFile."lazygit".source = "${dotfiles}/lazygit";
+  xdg.configFile.".yabairc".source = "${dotfiles}/.yabairc";
 }
