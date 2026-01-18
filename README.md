@@ -1,14 +1,13 @@
 # nixconf
 ## Build
-Run:
+Run (build validates the flake):
 
 ```sh
 docker build -t nixos-test .
 ```
 
-then
+Optional re-check in a fresh container:
 
 ```sh
-docker run -it nixos-test nvim
+docker run --rm nixos-test
 ```
-

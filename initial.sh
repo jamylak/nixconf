@@ -80,8 +80,8 @@ COPY . .
 # Build minimal system closure (sanity check)
 RUN nix build .#nixosConfigurations.minimal.config.system.build.toplevel
 
-# Drop into shell with dev's home-manager environment
-CMD [ "nix", "run", ".#homeConfigurations.dev.activationPackage" ]
+# Default to a quick build so `docker run` re-validates the flake
+CMD [ "nix", "build", ".#nixosConfigurations.minimal.config.system.build.toplevel" ]
 EOF
 
 echo "Repo created in $(pwd). Run 'docker build -t nixos-test .' then 'docker run -it nixos-test nvim'."
