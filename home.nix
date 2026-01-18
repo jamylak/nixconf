@@ -12,6 +12,7 @@
     pkgs.gnumake
     pkgs.cargo
     pkgs.cmake
+    pkgs.fish
   ];
 
   home.file.".config/nvim".source = nvimconf;

@@ -42,5 +42,5 @@ RUN test -x /nix/var/nix/profiles/per-user/dev/profile/bin/nvim
 
 # Run as the dev user for the shell
 USER dev
-# Load Home Manager session vars, then drop into a shell
-CMD [ "sh", "-lc", ". /home/dev/.nix-profile/etc/profile.d/hm-session-vars.sh && exec sh" ]
+# Load Home Manager session vars, then drop into fish
+CMD [ "sh", "-lc", ". /home/dev/.nix-profile/etc/profile.d/hm-session-vars.sh && exec /home/dev/.nix-profile/bin/fish" ]
