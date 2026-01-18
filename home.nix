@@ -10,6 +10,8 @@
   home.packages = [
     pkgs.neovim
     pkgs.gnumake
+    pkgs.cargo
+    pkgs.cmake
   ];
 
   home.file.".config/nvim".source = nvimconf;
