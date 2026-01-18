@@ -13,11 +13,15 @@ cat > flake.nix <<'EOF'
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nvimconf = {
+      url = "github:jamylak/nvimconf";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, nvimconf, ... }:
     let
-      system = "x86_64-linux"; # Docker base is x86_64 even on M1
+      system = builtins.currentSystem;
     in {
       nixosConfigurations.minimal = nixpkgs.lib.nixosSystem {
         inherit system;
@@ -42,6 +46,9 @@ cat > flake.nix <<'EOF'
           {
             home-manager.useUserPackages = true;
             home-manager.useGlobalPkgs = true;
+            home-manager.extraSpecialArgs = {
+              inherit nvimconf;
+            };
             home-manager.users.dev = import ./home.nix;
           }
         ];
@@ -52,7 +59,7 @@ EOF
 
 # home.nix
 cat > home.nix <<'EOF'
-{ pkgs, ... }: {
+{ pkgs, nvimconf, ... }: {
   home.username = "dev";
   home.homeDirectory = "/home/dev";
 
@@ -62,6 +69,8 @@ cat > home.nix <<'EOF'
   home.packages = [
     pkgs.neovim
   ];
+
+  home.file.".config/nvim".source = nvimconf;
 }
 EOF
 
@@ -85,8 +94,8 @@ COPY . .
 # Build Home Manager activation (sanity check)
 RUN nix build --impure .#homeConfigurations.dev.activationPackage
 
-# Default to a quick build + activation so `docker run` validates config and apply
-CMD [ "sh", "-lc", "nix build --impure .#homeConfigurations.dev.activationPackage && ./result/activate" ]
+# Default to a quick build + activation, then drop into a shell
+CMD [ "sh", "-lc", "nix build --impure .#homeConfigurations.dev.activationPackage && ./result/activate && exec sh" ]
 EOF
 
 echo "Repo created in $(pwd). Run 'docker build -t nixos-test .' then 'docker run --rm nixos-test'."

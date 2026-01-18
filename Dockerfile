@@ -16,5 +16,5 @@ COPY . .
 # Build Home Manager activation (sanity check)
 RUN nix build --impure .#homeConfigurations.dev.activationPackage
 
-# Default to a quick build + activation so `docker run` validates config and apply
-CMD [ "sh", "-lc", "nix build --impure .#homeConfigurations.dev.activationPackage && ./result/activate" ]
+# Default to a quick build + activation, then drop into a shell
+CMD [ "sh", "-lc", "nix build --impure .#homeConfigurations.dev.activationPackage && ./result/activate && exec sh" ]

@@ -6,10 +6,10 @@ Run (build validates Home Manager config):
 docker build -t nixos-test .
 ```
 
-Optional re-check + activation in a fresh container:
+Optional re-check + activation in a fresh container (drops into a shell):
 
 ```sh
-docker run --rm nixos-test
+docker run --rm -it nixos-test
 
 To poke around inside the container:
 

@@ -5,9 +5,13 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nvimconf = {
+      url = "github:jamylak/nvimconf";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, nvimconf, ... }:
     let
       system = builtins.currentSystem;
       pkgs = import nixpkgs { inherit system; };
@@ -30,6 +34,9 @@
           {
             home-manager.useUserPackages = true;
             home-manager.useGlobalPkgs = true;
+            home-manager.extraSpecialArgs = {
+              inherit nvimconf;
+            };
             home-manager.users.dev = import ./home.nix;
           }
         ];
@@ -40,6 +47,9 @@
         modules = [
           ./home.nix
         ];
+        extraSpecialArgs = {
+          inherit nvimconf;
+        };
       };
     };
 }

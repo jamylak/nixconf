@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, nvimconf, ... }: {
   home.username = "dev";
   home.homeDirectory = "/home/dev";
 
@@ -10,4 +10,6 @@
   home.packages = [
     pkgs.neovim
   ];
+
+  home.file.".config/nvim".source = nvimconf;
 }
