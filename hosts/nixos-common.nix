@@ -6,7 +6,6 @@
   users.users.james = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    shell = pkgs.fish;
   };
 
   home-manager.useUserPackages = true;
