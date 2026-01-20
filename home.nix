@@ -16,6 +16,7 @@ in {
     pkgs.cargo
     pkgs.cmake
     pkgs.starship
+    pkgs.fish
     pkgs.fzf
     pkgs.eza
     pkgs.yazi
@@ -47,11 +48,6 @@ in {
     enable = true;
     enableFishIntegration = true;
   };
-
-  programs.fish = lib.mkMerge [
-    { enable = true; }
-    # (lib.mkIf isNixos { loginShell = true; })
-  ];
 
   home.file.".config/nvim".source = nvimconf;
 
