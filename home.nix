@@ -25,11 +25,22 @@ in {
     pkgs.tmux
     pkgs.ripgrep
     pkgs.fd
+    pkgs.git
+    pkgs.openssh
+    pkgs.curl
+    pkgs.wget
+    pkgs.unzip
+    pkgs.zip
+    pkgs.xz
+    pkgs.gzip
+    pkgs.gnutar
   ] ++ lib.optionals isNixos (
     [
       pkgs.alacritty
       pkgs.kitty
       pkgs.ghostty
+      pkgs.brave
+      pkgs.vlc
     ]
   );
 
