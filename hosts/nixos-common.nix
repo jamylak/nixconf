@@ -47,6 +47,7 @@
     dconf.settings = {
       "org/gnome/shell/keybindings" = {
         open-application-menu = [];
+        show-clipboard = [];
         switch-to-application-1 = [];
         switch-to-application-2 = [];
         switch-to-application-3 = [];
