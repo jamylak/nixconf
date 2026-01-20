@@ -1,4 +1,4 @@
-{ nvimconf, dotfiles, fzf-fish, ... }: {
+{ nvimconf, dotfiles, fzf-fish, pkgs, ... }: {
   system.stateVersion = "24.05";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -6,6 +6,7 @@
   users.users.james = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    shell = pkgs.fish;
   };
 
   home-manager.useUserPackages = true;

@@ -15,7 +15,6 @@ in {
     pkgs.gnumake
     pkgs.cargo
     pkgs.cmake
-    pkgs.fish
     pkgs.starship
     pkgs.fzf
     pkgs.eza
@@ -51,7 +50,6 @@ in {
 
   programs.fish = {
     enable = true;
-    loginShell = true;
   };
 
   home.file.".config/nvim".source = nvimconf;
