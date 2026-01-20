@@ -16,7 +16,6 @@ in {
     pkgs.cargo
     pkgs.cmake
     pkgs.starship
-    pkgs.fish
     pkgs.fzf
     pkgs.eza
     pkgs.yazi
@@ -42,7 +41,9 @@ in {
       pkgs.brave
       pkgs.vlc
     ]
-  );
+  ) ++ lib.optionals (!isNixos) [
+    pkgs.fish
+  ];
 
   programs.fzf = {
     enable = true;

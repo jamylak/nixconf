@@ -3,9 +3,14 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  environment.systemPackages = [
+    pkgs.fish
+  ];
+
   users.users.james = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    shell = pkgs.fish;
   };
 
   home-manager.useUserPackages = true;
