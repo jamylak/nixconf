@@ -59,17 +59,26 @@ in {
   xdg.configFile."nvim".source = nvimconf;
   xdg.configFile."dotfiles".source = dotfiles;
 
-  xdg.configFile."fish/config.fish".source = "${dotfiles}/fish/config.fish";
+  xdg.configFile."fish/config.fish".source =
+    "${config.xdg.configHome}/dotfiles/fish/config.fish";
   xdg.configFile."fish/conf.d".source = "${fzf-fish}/conf.d";
   xdg.configFile."fish/functions".source = "${fzf-fish}/functions";
-  xdg.configFile."alacritty".source = "${dotfiles}/alacritty";
-  xdg.configFile."kitty".source = "${dotfiles}/kitty";
-  xdg.configFile."ghostty".source = "${dotfiles}/ghostty";
-  xdg.configFile."helix".source = "${dotfiles}/helix";
-  xdg.configFile."yazi".source = "${dotfiles}/yazi";
-  xdg.configFile."btop/btop.conf".source = "${dotfiles}/btop/btop.conf";
-  xdg.configFile."lazygit".source = "${dotfiles}/lazygit";
-  xdg.configFile.".yabairc".source = "${dotfiles}/.yabairc";
+  xdg.configFile."alacritty".source =
+    "${config.xdg.configHome}/dotfiles/alacritty";
+  xdg.configFile."kitty".source =
+    "${config.xdg.configHome}/dotfiles/kitty";
+  xdg.configFile."ghostty".source =
+    "${config.xdg.configHome}/dotfiles/ghostty";
+  xdg.configFile."helix".source =
+    "${config.xdg.configHome}/dotfiles/helix";
+  xdg.configFile."yazi".source =
+    "${config.xdg.configHome}/dotfiles/yazi";
+  xdg.configFile."btop/btop.conf".source =
+    "${config.xdg.configHome}/dotfiles/btop/btop.conf";
+  xdg.configFile."lazygit".source =
+    "${config.xdg.configHome}/dotfiles/lazygit";
+  xdg.configFile.".yabairc".source =
+    "${config.xdg.configHome}/dotfiles/.yabairc";
 
   home.file."Downloads/.keep".text = "";
 

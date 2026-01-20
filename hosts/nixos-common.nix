@@ -24,8 +24,25 @@
     inherit fzf-fish;
     inherit ghostty;
   };
-  home-manager.users.james = {
+  home-manager.users.james = { config, ... }:
+    let
+      homeDir = config.home.homeDirectory;
+      localNvimconf = "${homeDir}/proj/nvimconf";
+      localDotfiles = "${homeDir}/proj/dotfiles";
+    in {
     imports = [ ../home.nix ];
+
+    # Use ~/proj/nvimconf or ~/proj/dotfiles
+    # when they exist for config
+    xdg.configFile."nvim".source =
+      if builtins.pathExists localNvimconf
+      then config.lib.file.mkOutOfStoreSymlink localNvimconf
+      else nvimconf;
+
+    xdg.configFile."dotfiles".source =
+      if builtins.pathExists localDotfiles
+      then config.lib.file.mkOutOfStoreSymlink localDotfiles
+      else dotfiles;
 
     dconf.settings = {
       "org/gnome/shell/keybindings" = {
