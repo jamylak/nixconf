@@ -13,6 +13,7 @@ in {
   # Example: install neovim
   home.packages = [
     pkgs.neovim
+    pkgs.vim
     pkgs.gnumake
     pkgs.cargo
     pkgs.cmake
