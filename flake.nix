@@ -60,7 +60,7 @@
 
       homeConfigurations = {
         docker = mkHome {
-          system = "x86_64-linux";
+          system = "aarch64-linux";
           homeModule = ./hosts/home-docker.nix;
         };
         mac = mkHome {
