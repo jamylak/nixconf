@@ -7,11 +7,11 @@
 
   virtualisation.vmware.guest.enable = true;
 
-  fileSystems."/mnt/hgfs" = {
-    device = ".host:/";
-    fsType = "fuse.vmhgfs-fuse";
-    options = [ "allow_other" ];
-  };
+  # fileSystems."/mnt/hgfs" = {
+  #   device = ".host:/";
+  #   fsType = "fuse.vmhgfs-fuse";
+  #   options = [ "allow_other" ];
+  # };
 
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
