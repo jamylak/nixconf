@@ -71,6 +71,15 @@ Steps:
    networking.networkmanager.enable = true;
    ```
 
+```sh
+sudo mkdir -p /mnt/hgfs
+sudo vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other
+```
+
+```sh
+sudo nixos-rebuild switch --flake ~/nixconf#vmware
+```
+
 Then build and install:
 
 ```sh
