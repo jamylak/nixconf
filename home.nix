@@ -49,6 +49,11 @@ in {
     enableFishIntegration = true;
   };
 
+  programs.fish = {
+    enable = true;
+    loginShell = true;
+  };
+
   home.file.".config/nvim".source = nvimconf;
 
   xdg.configFile."fish/config.fish".source = "${dotfiles}/fish/config.fish";
