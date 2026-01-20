@@ -50,7 +50,7 @@ in {
 
   programs.fish = lib.mkMerge [
     { enable = true; }
-    (lib.mkIf isNixos { loginShell = true; })
+    # (lib.mkIf isNixos { loginShell = true; })
   ];
 
   home.file.".config/nvim".source = nvimconf;
