@@ -48,7 +48,7 @@
           specialArgs = hmArgs;
         };
         vmware = nixpkgs.lib.nixosSystem {
-          system = builtins.currentSystem;
+          system = "aarch64-linux";
           modules = [
             home-manager.nixosModules.home-manager
             ./hosts/nixos-common.nix
