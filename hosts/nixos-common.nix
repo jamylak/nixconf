@@ -43,6 +43,10 @@
         hide = [];
         close = [ "<Super>w" "<Super>q" ];
       };
+      "org/gnome/desktop/default-applications/terminal" = {
+        exec = "kitty";
+        exec-arg = "";
+      };
     };
   };
 }
