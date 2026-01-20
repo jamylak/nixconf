@@ -71,4 +71,5 @@ in {
   xdg.configFile.".yabairc".source = "${dotfiles}/.yabairc";
 
   home.file."Downloads/.keep".text = "";
+  home.file."proj/.keep".text = "";
 }
