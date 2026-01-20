@@ -41,7 +41,7 @@
       };
       "org/gnome/desktop/wm/keybindings" = {
         hide = [];
-        close = [ "<Super>q" ];
+        close = [ "<Super>w" "<Super>q" ];
       };
     };
   };
