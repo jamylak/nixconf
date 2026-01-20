@@ -24,5 +24,21 @@
     inherit fzf-fish;
     inherit ghostty;
   };
-  home-manager.users.james = import ../home.nix;
+  home-manager.users.james = {
+    imports = [ ../home.nix ];
+
+    dconf.settings = {
+      "org/gnome/shell/keybindings" = {
+        switch-to-application-1 = [];
+        switch-to-application-2 = [];
+        switch-to-application-3 = [];
+        switch-to-application-4 = [];
+        switch-to-application-5 = [];
+        switch-to-application-6 = [];
+        switch-to-application-7 = [];
+        switch-to-application-8 = [];
+        switch-to-application-9 = [];
+      };
+    };
+  };
 }
