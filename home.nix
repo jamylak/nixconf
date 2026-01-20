@@ -55,7 +55,8 @@ in {
     enableFishIntegration = true;
   };
 
-  home.file.".config/nvim".source = nvimconf;
+  xdg.configFile."nvim".source = nvimconf;
+  xdg.configFile."dotfiles".source = dotfiles;
 
   xdg.configFile."fish/config.fish".source = "${dotfiles}/fish/config.fish";
   xdg.configFile."fish/conf.d".source = "${fzf-fish}/conf.d";
