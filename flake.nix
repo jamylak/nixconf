@@ -14,7 +14,7 @@
       flake = false;
     };
     ghostty = {
-      url = "github:ghostty-org/ghostty";
+      url = "github:ghostty-org/ghostty?rev=9ec6e9ea9a8a590fd906a0d216133d949581f54b";
     };
     fzf-fish = {
       url = "github:PatrickF1/fzf.fish";
