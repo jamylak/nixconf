@@ -71,5 +71,10 @@ in {
   xdg.configFile.".yabairc".source = "${dotfiles}/.yabairc";
 
   home.file."Downloads/.keep".text = "";
-  home.file."proj/.keep".text = "";
+
+  home.activation.createProjDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if [ ! -d "$HOME/proj" ]; then
+      mkdir -p "$HOME/proj"
+    fi
+  '';
 }
