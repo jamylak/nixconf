@@ -73,7 +73,7 @@ in {
   home.file."Downloads/.keep".text = "";
 
   home.activation.createProjDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    if [ ! -e "$HOME/proj" ]; then
+    if [ ! -e "$HOME/proj" ] && [ ! -L "$HOME/proj" ]; then
       mkdir -p "$HOME/proj"
     fi
   '';
