@@ -1,4 +1,4 @@
-{ nvimconf, dotfiles, fzf-fish, pkgs, ... }: {
+{ nvimconf, dotfiles, fzf-fish, ghostty, pkgs, ... }: {
   system.stateVersion = "24.05";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -22,6 +22,7 @@
     inherit nvimconf;
     inherit dotfiles;
     inherit fzf-fish;
+    inherit ghostty;
   };
   home-manager.users.james = import ../home.nix;
 }
