@@ -67,4 +67,6 @@ in {
   xdg.configFile."btop/btop.conf".source = "${dotfiles}/btop/btop.conf";
   xdg.configFile."lazygit".source = "${dotfiles}/lazygit";
   xdg.configFile.".yabairc".source = "${dotfiles}/.yabairc";
+
+  home.file."Downloads/.keep".text = "";
 }
