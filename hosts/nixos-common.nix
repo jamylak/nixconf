@@ -39,10 +39,10 @@
       then config.lib.file.mkOutOfStoreSymlink localNvimconf
       else nvimconf;
 
-    xdg.configFile."dotfiles".source =
-      if builtins.pathExists localDotfiles
-      then config.lib.file.mkOutOfStoreSymlink localDotfiles
-      else dotfiles;
+    xdg.configFile."fish/config.fish".source =
+      if builtins.pathExists "${localDotfiles}/fish/config.fish"
+      then config.lib.file.mkOutOfStoreSymlink "${localDotfiles}/fish/config.fish"
+      else "${dotfiles}/fish/config.fish";
 
     dconf.settings = {
       "org/gnome/shell/keybindings" = {
