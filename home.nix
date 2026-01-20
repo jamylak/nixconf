@@ -46,6 +46,7 @@ in {
     ghosttyPkg
     pkgs.brave
     pkgs.vlc
+    pkgs.wl-clipboard
   ]
   ) ++ lib.optionals (!isNixos) [
   ];
