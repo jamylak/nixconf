@@ -39,6 +39,10 @@
         switch-to-application-8 = [];
         switch-to-application-9 = [];
       };
+      "org/gnome/desktop/wm/keybindings" = {
+        hide = [];
+        close = [ "<Super>q" ];
+      };
     };
   };
 }
