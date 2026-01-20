@@ -48,7 +48,7 @@
           specialArgs = hmArgs;
         };
         vmware = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
+          system = builtins.currentSystem;
           modules = [
             home-manager.nixosModules.home-manager
             ./hosts/nixos-common.nix
@@ -60,11 +60,11 @@
 
       homeConfigurations = {
         docker = mkHome {
-          system = "aarch64-linux";
+          system = builtins.currentSystem;
           homeModule = ./hosts/home-docker.nix;
         };
         mac = mkHome {
-          system = "aarch64-darwin";
+          system = builtins.currentSystem;
           homeModule = ./hosts/home-mac.nix;
         };
       };
