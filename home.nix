@@ -28,6 +28,7 @@ in {
     pkgs.ripgrep
     pkgs.fd
     pkgs.git
+    pkgs.gh
     pkgs.openssh
     pkgs.curl
     pkgs.wget
