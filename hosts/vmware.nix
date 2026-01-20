@@ -3,6 +3,8 @@
     ./vmware-hardware.nix
   ];
 
+  home-manager.extraSpecialArgs.isVmware = true;
+
   networking.hostName = "vmware";
 
   virtualisation.vmware.guest.enable = true;

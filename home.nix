@@ -1,6 +1,7 @@
-{ config, pkgs, lib, nvimconf, dotfiles, ghostty, fzf-fish, osConfig ? null, ... }:
+{ config, pkgs, lib, nvimconf, dotfiles, ghostty, fzf-fish, osConfig ? null, isVmware ? false, ... }:
 let
   isNixos = osConfig != null && osConfig.system ? nixos;
+  isVmwareHost = isVmware || (isNixos && (osConfig.networking.hostName or "") == "vmware");
   ghosttyPkg = ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   home.username = lib.mkDefault "dev";
@@ -54,6 +55,15 @@ in {
   programs.fzf = {
     enable = true;
     enableFishIntegration = true;
+  };
+
+  programs.git = {
+    enable = true;
+    extraConfig = lib.mkIf isVmwareHost {
+      safe = {
+        directory = "*";
+      };
+    };
   };
 
   xdg.configFile."nvim".source = nvimconf;
