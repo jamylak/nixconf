@@ -33,6 +33,7 @@ in {
     pkgs.xz
     pkgs.gzip
     pkgs.gnutar
+    pkgs.nodejs
   ] ++ lib.optionals isNixos (
     [
       pkgs.alacritty
