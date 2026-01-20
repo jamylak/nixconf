@@ -1,4 +1,7 @@
-{ pkgs, lib, nvimconf, dotfiles, fzf-fish, ... }: {
+{ config, pkgs, lib, nvimconf, dotfiles, fzf-fish, osConfig ? null, ... }:
+let
+  isNixos = osConfig != null && osConfig.system ? nixos;
+in {
   home.username = lib.mkDefault "dev";
   home.homeDirectory = lib.mkDefault "/home/dev";
 
@@ -18,7 +21,17 @@
     pkgs.eza
     pkgs.yazi
     pkgs.lazygit
-  ];
+    pkgs.helix
+    pkgs.tmux
+    pkgs.ripgrep
+    pkgs.fd
+  ] ++ lib.optionals isNixos (
+    [
+      pkgs.alacritty
+      pkgs.kitty
+      pkgs.ghostty
+    ]
+  );
 
   programs.fzf = {
     enable = true;
