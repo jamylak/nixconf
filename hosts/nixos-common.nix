@@ -6,7 +6,7 @@
   environment.systemPackages = [
 
   ];
-  program.fish = {
+  programs.fish = {
     enable = true;
   };
 
