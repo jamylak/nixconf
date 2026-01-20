@@ -59,7 +59,7 @@ in {
 
   programs.git = {
     enable = true;
-    extraConfig = lib.mkIf isVmwareHost {
+    settings = lib.mkIf isVmwareHost {
       safe = {
         directory = "*";
       };
