@@ -13,18 +13,22 @@
       url = "github:jamylak/dotfiles";
       flake = false;
     };
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+    };
     fzf-fish = {
       url = "github:PatrickF1/fzf.fish";
       flake = false;
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nvimconf, dotfiles, fzf-fish, ... }:
+  outputs = { self, nixpkgs, home-manager, nvimconf, dotfiles, ghostty, fzf-fish, ... }:
     let
       mkPkgs = system: import nixpkgs { inherit system; };
       hmArgs = {
         inherit nvimconf;
         inherit dotfiles;
+        inherit ghostty;
         inherit fzf-fish;
       };
       mkHome = { system, homeModule }:

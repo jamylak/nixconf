@@ -1,6 +1,7 @@
-{ config, pkgs, lib, nvimconf, dotfiles, fzf-fish, osConfig ? null, ... }:
+{ config, pkgs, lib, nvimconf, dotfiles, ghostty, fzf-fish, osConfig ? null, ... }:
 let
   isNixos = osConfig != null && osConfig.system ? nixos;
+  ghosttyPkg = ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   home.username = lib.mkDefault "dev";
   home.homeDirectory = lib.mkDefault "/home/dev";
@@ -16,6 +17,7 @@ in {
     pkgs.cargo
     pkgs.cmake
     pkgs.starship
+    pkgs.fish
     pkgs.fzf
     pkgs.eza
     pkgs.yazi
@@ -37,14 +39,13 @@ in {
     pkgs.btop
   ] ++ lib.optionals isNixos (
     [
-      pkgs.alacritty
-      pkgs.kitty
-      pkgs.ghostty
-      pkgs.brave
-      pkgs.vlc
-    ]
+    pkgs.alacritty
+    pkgs.kitty
+    ghosttyPkg
+    pkgs.brave
+    pkgs.vlc
+  ]
   ) ++ lib.optionals (!isNixos) [
-    pkgs.fish
   ];
 
   programs.fzf = {

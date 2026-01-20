@@ -6,14 +6,14 @@
   environment.systemPackages = [
 
   ];
-  programs.fish = {
-    enable = true;
-  };
+  # programs.fish = {
+  #   enable = true;
+  # };
 
   users.users.james = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    shell = pkgs.fish;
+    # shell = pkgs.fish;
   };
 
   home-manager.useUserPackages = true;
