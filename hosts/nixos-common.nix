@@ -60,7 +60,7 @@
       };
       "org/gnome/desktop/wm/keybindings" = {
         hide = [];
-        close = [ "<Super>w" "<Super>q" ];
+        close = [ "<Super>q" ];
       };
       "org/gnome/desktop/default-applications/terminal" = {
         exec = "kitty";
