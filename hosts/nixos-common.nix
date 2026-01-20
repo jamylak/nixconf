@@ -4,8 +4,11 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   environment.systemPackages = [
-    pkgs.fish
+
   ];
+  program.fish = {
+    enable = true;
+  };
 
   users.users.james = {
     isNormalUser = true;
