@@ -18,6 +18,7 @@ in {
     pkgs.gnumake
     pkgs.cargo
     pkgs.cmake
+    pkgs.ninja
     pkgs.starship
     pkgs.fish
     pkgs.fzf
