@@ -26,7 +26,6 @@ in {
     pkgs.yazi
     pkgs.lazygit
     pkgs.helix
-    pkgs.tmux
     pkgs.ripgrep
     pkgs.fd
     pkgs.git
@@ -58,6 +57,16 @@ in {
   programs.fzf = {
     enable = true;
     enableFishIntegration = true;
+  };
+
+  programs.tmux = {
+    enable = true;
+    plugins = with pkgs.tmuxPlugins; [
+      dracula
+    ];
+    extraConfig = ''
+      source-file ${dotfiles}/.tmux.minimal.conf
+    '';
   };
 
   programs.git = {
