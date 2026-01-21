@@ -18,12 +18,11 @@
   ];
 
   systemd.services.mnt-hgfs = {
-    after = [ "vmware.service" ];
+    after = [ "vmware.service" "graphical.target" ];
     wants = [ "vmware.service" ];
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = [ "graphical.target" ];
     serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
+      Type = "simple";
       ExecStart = "${pkgs.open-vm-tools}/bin/vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other";
       ExecStop = "/run/wrappers/bin/fusermount -u /mnt/hgfs";
     };
