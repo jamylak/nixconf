@@ -20,9 +20,12 @@
       url = "github:PatrickF1/fzf.fish";
       flake = false;
     };
+    chomper = {
+      url = "github:jamylak/chomper";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nvimconf, dotfiles, ghostty, fzf-fish, ... }:
+  outputs = { self, nixpkgs, home-manager, nvimconf, dotfiles, ghostty, fzf-fish, chomper, ... }:
     let
       mkPkgs = system: import nixpkgs { inherit system; };
       hmArgs = {
@@ -30,6 +33,7 @@
         inherit dotfiles;
         inherit ghostty;
         inherit fzf-fish;
+        inherit chomper;
       };
       mkHome = { system, homeModule }:
         home-manager.lib.homeManagerConfiguration {

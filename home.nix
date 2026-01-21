@@ -1,4 +1,4 @@
-{ config, pkgs, lib, nvimconf, dotfiles, ghostty, fzf-fish, osConfig ? null, isVmware ? false, ... }:
+{ config, pkgs, lib, nvimconf, dotfiles, ghostty, fzf-fish, chomper, osConfig ? null, isVmware ? false, ... }:
 let
   isNixos = osConfig != null && osConfig.system ? nixos;
   isVmwareHost = isVmware || (isNixos && (osConfig.networking.hostName or "") == "vmware");
@@ -42,6 +42,7 @@ in {
     pkgs.btop
     pkgs.neovide
     pkgs.binutils
+    chomper.packages.${pkgs.stdenv.hostPlatform.system}.default
   ] ++ lib.optionals isNixos (
     [
     pkgs.alacritty
