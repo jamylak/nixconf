@@ -8,6 +8,12 @@
   networking.hostName = "vmware";
 
   virtualisation.vmware.guest.enable = true;
+  services.open-vm-tools.enable = true;
+  programs.fuse.userAllowOther = true;
+
+  systemd.tmpfiles.rules = [
+    "d /mnt/hgfs 0755 root root -"
+  ];
 
   fileSystems."/mnt/hgfs" = {
     device = ".host:/";
