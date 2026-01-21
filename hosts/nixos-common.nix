@@ -67,6 +67,10 @@
         hide = [];
         close = [ "<Super>q" ];
       };
+      "org/gnome/desktop/peripherals/keyboard" = {
+        delay = 168;
+        repeat-interval = 23;
+      };
       "org/gnome/desktop/default-applications/terminal" = {
         exec = "kitty";
         exec-arg = "";
