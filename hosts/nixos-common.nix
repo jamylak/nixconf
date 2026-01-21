@@ -24,7 +24,7 @@
     inherit fzf-fish;
     inherit ghostty;
   };
-  home-manager.users.james = { config, ... }:
+  home-manager.users.james = { config, lib, ... }:
     let
       homeDir = config.home.homeDirectory;
       localNvimconf = "${homeDir}/proj/nvimconf";
@@ -68,8 +68,8 @@
         close = [ "<Super>q" ];
       };
       "org/gnome/desktop/peripherals/keyboard" = {
-        delay = 168;
-        repeat-interval = 23;
+        delay = lib.hm.gvariant.mkUint32 168;
+        repeat-interval = lib.hm.gvariant.mkUint32 23;
       };
       "org/gnome/desktop/default-applications/terminal" = {
         exec = "kitty";
