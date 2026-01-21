@@ -22,9 +22,9 @@
     wants = [ "vmware.service" ];
     wantedBy = [ "graphical.target" ];
     serviceConfig = {
-      Type = "simple";
+      Type = "oneshot";
+      RemainAfterExit = true;
       ExecStart = "${pkgs.open-vm-tools}/bin/vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other";
-      ExecStop = "/run/wrappers/bin/fusermount -u /mnt/hgfs";
     };
   };
 
