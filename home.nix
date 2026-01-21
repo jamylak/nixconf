@@ -42,6 +42,7 @@ in {
     pkgs.nodejs
     pkgs.btop
     pkgs.neovide
+    pkgs.binutils
   ] ++ lib.optionals isNixos (
     [
     pkgs.alacritty
