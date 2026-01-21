@@ -29,6 +29,18 @@
     ];
   };
 
+  systemd.services.mnt-hgfs = {
+    after = [ "vmware.service" ];
+    wants = [ "vmware.service" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = "${pkgs.open-vm-tools}/bin/vmhgfs-fuse .host:/ /mnt/hgfs -o allow_other";
+      ExecStop = "/run/wrappers/bin/fusermount -u /mnt/hgfs";
+    };
+  };
+
   services.xserver.enable = true;
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
