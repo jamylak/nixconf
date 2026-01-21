@@ -40,6 +40,7 @@ in {
     pkgs.gnutar
     pkgs.nodejs
     pkgs.btop
+    pkgs.neovide
   ] ++ lib.optionals isNixos (
     [
     pkgs.alacritty
