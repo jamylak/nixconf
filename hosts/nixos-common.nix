@@ -65,6 +65,7 @@
       };
       "org/gnome/desktop/wm/keybindings" = {
         hide = [];
+        minimize = [];
         close = [ "<Super>q" ];
       };
       "org/gnome/desktop/peripherals/keyboard" = {
