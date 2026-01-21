@@ -17,18 +17,6 @@
     "d /mnt/hgfs 0755 root root -"
   ];
 
-  fileSystems."/mnt/hgfs" = {
-    device = ".host:/";
-    fsType = "fuse.vmhgfs-fuse";
-    options = [
-      "allow_other"
-      "nofail"
-      "x-systemd.automount"
-      "x-systemd.device-timeout=10"
-      "x-systemd.mount-timeout=10"
-    ];
-  };
-
   systemd.services.mnt-hgfs = {
     after = [ "vmware.service" ];
     wants = [ "vmware.service" ];
