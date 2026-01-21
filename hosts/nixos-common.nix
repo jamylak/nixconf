@@ -50,6 +50,7 @@
       };
       "org/gnome/shell/keybindings" = {
         open-application-menu = [];
+        focus-active-notification = [];
         toggle-message-tray = [];
         show-clipboard = [];
         switch-to-application-1 = [];
