@@ -53,6 +53,7 @@
         focus-active-notification = [];
         toggle-message-tray = [];
         show-clipboard = [];
+        show-all-apps = [];
         switch-to-application-1 = [];
         switch-to-application-2 = [];
         switch-to-application-3 = [];
