@@ -46,8 +46,7 @@
 
     dconf.settings = {
       "org/gnome/desktop/input-sources" = {
-        # Make Cmd (Super) behave like Ctrl for common shortcuts on mac keyboards.
-        xkb-options = [ "ctrl:swap_lwin_lctl" ];
+        xkb-options = [];
       };
       "org/gnome/shell/keybindings" = {
         open-application-menu = [];
