@@ -8,7 +8,6 @@
   networking.hostName = "vmware";
 
   virtualisation.vmware.guest.enable = true;
-  services.open-vm-tools.enable = true;
   programs.fuse.userAllowOther = true;
 
   systemd.tmpfiles.rules = [
