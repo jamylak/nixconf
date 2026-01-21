@@ -9,6 +9,9 @@
 
   virtualisation.vmware.guest.enable = true;
   programs.fuse.userAllowOther = true;
+  environment.systemPackages = [
+    pkgs.open-vm-tools
+  ];
 
   systemd.tmpfiles.rules = [
     "d /mnt/hgfs 0755 root root -"
