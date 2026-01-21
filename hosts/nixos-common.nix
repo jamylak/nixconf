@@ -45,6 +45,9 @@
       else "${dotfiles}/fish/config.fish";
 
     dconf.settings = {
+      "org/gnome/settings-daemon/plugins/media-keys" = {
+        rotate-video-lock-static = [];
+      };
       "org/gnome/desktop/input-sources" = {
         xkb-options = [];
       };
