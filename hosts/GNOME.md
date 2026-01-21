@@ -2,12 +2,14 @@
 ## Keybindings
   - Dump everything and grep
 
-  ```sh
+  ```fish
   dconf dump / | rg -i 'super.*o|<super>o|rotate-video-lock-static'
   ```
 
   - List all schemas, then search all recursively:
 
-  ```sh
-  gsettings list-schemas | while read -r s; do gsettings list-recursively "$s"; done | rg -i 'super.*o|<super>o|rotate-video-lock-static'
+  ```fish
+  gsettings list-schemas | while read -l s
+    gsettings list-recursively $s
+  end | rg -i 'super.*o|<super>o|rotate-video-lock-static'
   ```
