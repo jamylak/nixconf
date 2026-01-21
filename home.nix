@@ -1,5 +1,7 @@
-{ config, pkgs, lib, nvimconf, dotfiles, ghostty, fzf-fish, chomper, osConfig ? null, isVmware ? false, ... }:
+{ config, pkgs, lib, nvimconf, dotfiles, ghostty, fzf-fish, chomper, osConfig ? null, ... }:
 let
+  # Optional module arg; default to false if not provided.
+  isVmware = config._module.args.isVmware or false;
   isNixos = osConfig != null && osConfig.system ? nixos;
   isVmwareHost = isVmware || (isNixos && (osConfig.networking.hostName or "") == "vmware");
   ghosttyPkg = ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
