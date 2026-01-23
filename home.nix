@@ -44,6 +44,7 @@ in {
     pkgs.btop
     pkgs.neovide
     pkgs.binutils
+    pkgs.vscode-extensions.vadimcn.vscode-lldb.adapter
     chomper.packages.${pkgs.stdenv.hostPlatform.system}.default
   ] ++ lib.optionals isNixos (
     [
