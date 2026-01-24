@@ -45,6 +45,7 @@ in {
     pkgs.gnutar
     pkgs.nodejs
     pkgs.binutils
+    pkgs.stdenv.cc
     pkgs.vscode-extensions.vadimcn.vscode-lldb.adapter
     chomper.packages.${pkgs.stdenv.hostPlatform.system}.default
 
