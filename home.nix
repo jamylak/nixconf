@@ -46,6 +46,7 @@ in {
     pkgs.nodejs
     pkgs.binutils
     pkgs.stdenv.cc
+    pkgs.zig
     pkgs.vscode-extensions.vadimcn.vscode-lldb.adapter
     chomper.packages.${pkgs.stdenv.hostPlatform.system}.default
 
