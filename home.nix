@@ -39,6 +39,7 @@ in {
     pkgs.wget
     pkgs.unzip
     pkgs.zip
+    pkgs.uv
     pkgs.xz
     pkgs.gzip
     pkgs.gnutar
