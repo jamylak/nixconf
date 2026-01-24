@@ -6,13 +6,18 @@
   environment.systemPackages = [
 
   ];
+  hardware.uinput.enable = true;
+  boot.kernelModules = [ "uinput" ];
+  services.udev.extraRules = ''
+    KERNEL=="uinput", GROUP="input", TAG+="uaccess"
+  '';
   programs.fish = {
     enable = true;
   };
 
   users.users.james = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "input" ];
     shell = pkgs.fish;
   };
 
@@ -44,6 +49,34 @@
       if builtins.pathExists "${localDotfiles}/fish/config.fish"
       then config.lib.file.mkOutOfStoreSymlink "${localDotfiles}/fish/config.fish"
       else "${dotfiles}/fish/config.fish";
+
+    home.packages = lib.mkAfter [ pkgs.xremap ];
+
+    xdg.configFile."xremap/config.yml".text = ''
+      keymap:
+        - name: Brave-only bindings
+          application:
+            only: [/brave/i, Brave-browser, brave-browser]
+          remap:
+            Super-n: C-n
+            Alt-n: C-n
+            C-n: Down
+            C-p: Up
+    '';
+
+    systemd.user.services.xremap = {
+      Unit = {
+        Description = "xremap";
+        After = [ "graphical-session.target" ];
+      };
+      Service = {
+        ExecStart = "${pkgs.xremap}/bin/xremap --watch ${config.xdg.configHome}/xremap/config.yml";
+        Restart = "on-failure";
+      };
+      Install = {
+        WantedBy = [ "default.target" ];
+      };
+    };
 
     dconf.settings = {
       "org/gnome/settings-daemon/plugins/media-keys" = {
