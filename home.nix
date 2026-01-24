@@ -60,10 +60,10 @@ in {
     pkgs.nodePackages.yaml-language-server
     pkgs.nixd
     pkgs.ty
+    pkgs.taplo
     # pkgs.nodePackages.vscode-langservers-extracted
     # pkgs.gopls
     # pkgs.lemminx
-    # pkgs.taplo
     # pkgs.nodePackages.typescript-language-server
     # pkgs.nodePackages.typescript
   ] ++ lib.optionals isNixos (
