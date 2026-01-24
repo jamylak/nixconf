@@ -15,6 +15,7 @@ in {
 
   # Example: install neovim
   home.packages = [
+    pkgs.neovide
     pkgs.neovim
     pkgs.vim
     pkgs.gnumake
@@ -26,6 +27,7 @@ in {
     pkgs.fzf
     pkgs.eza
     pkgs.yazi
+    pkgs.btop
     pkgs.lazygit
     pkgs.helix
     pkgs.ripgrep
@@ -41,11 +43,25 @@ in {
     pkgs.gzip
     pkgs.gnutar
     pkgs.nodejs
-    pkgs.btop
-    pkgs.neovide
     pkgs.binutils
     pkgs.vscode-extensions.vadimcn.vscode-lldb.adapter
     chomper.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+    # LSPs
+    pkgs.zls
+    pkgs.clang-tools
+    pkgs.lua-language-server
+    pkgs.asm-lsp
+    pkgs.fish-lsp
+    pkgs.nodePackages.yaml-language-server
+    pkgs.nixd
+    pkgs.ty
+    # pkgs.nodePackages.vscode-langservers-extracted
+    # pkgs.gopls
+    # pkgs.lemminx
+    # pkgs.taplo
+    # pkgs.nodePackages.typescript-language-server
+    # pkgs.nodePackages.typescript
   ] ++ lib.optionals isNixos (
     [
     pkgs.alacritty
