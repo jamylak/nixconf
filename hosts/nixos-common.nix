@@ -70,6 +70,7 @@
         switch-to-application-9 = [];
       };
       "org/gnome/desktop/wm/keybindings" = {
+        activate-window-menu = [];
         hide = [];
         minimize = [];
         close = [ "<Super>q" ];
