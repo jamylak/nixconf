@@ -64,6 +64,7 @@ in {
     pkgs.nixd
     pkgs.ty
     pkgs.taplo
+    pkgs.stylua
     # pkgs.nodePackages.vscode-langservers-extracted
     # pkgs.gopls
     # pkgs.lemminx
