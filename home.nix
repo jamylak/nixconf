@@ -45,6 +45,7 @@ in {
     pkgs.gnutar
     pkgs.nodejs
     pkgs.binutils
+    pkgs.lldb
     (pkgs.python3.withPackages (ps: [
       ps.debugpy
     ]))
