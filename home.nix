@@ -20,6 +20,7 @@ in {
     pkgs.vim
     pkgs.gnumake
     pkgs.cargo
+    pkgs.rustc
     pkgs.cmake
     pkgs.ninja
     pkgs.starship
