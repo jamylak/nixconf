@@ -45,6 +45,9 @@ in {
     pkgs.gnutar
     pkgs.nodejs
     pkgs.binutils
+    (pkgs.python3.withPackages (ps: [
+      ps.debugpy
+    ]))
     pkgs.stdenv.cc
     pkgs.zig
     pkgs.vscode-extensions.vadimcn.vscode-lldb.adapter
