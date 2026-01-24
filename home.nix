@@ -53,6 +53,7 @@ in {
     pkgs.clang-tools
     pkgs.lua-language-server
     pkgs.asm-lsp
+    pkgs.rust-analyzer
     pkgs.fish-lsp
     pkgs.nodePackages.yaml-language-server
     pkgs.nixd
