@@ -96,6 +96,18 @@ in {
   xdg.configFile."lazygit".source = "${dotfiles}/lazygit";
   xdg.configFile.".yabairc".source = "${dotfiles}/.yabairc";
 
+  xdg.desktopEntries = lib.mkIf isNixos {
+    brave-new-window = {
+      name = "New Brave Window";
+      genericName = "Web Browser";
+      comment = "Open a new Brave window";
+      exec = "brave --new-window";
+      icon = "brave-browser";
+      terminal = false;
+      categories = [ "Network" "WebBrowser" ];
+    };
+  };
+
   home.file."Downloads/.keep".text = "";
 
   home.activation.createProjDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
