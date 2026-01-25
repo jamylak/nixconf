@@ -146,7 +146,7 @@ in {
     [kwin]
     Close Window=Meta+Q,none,Close Window
     Overview=none,none,Overview
-    Grid View=none,none,Grid View
+    Grid View=Ctrl+Up,none,Grid View
     Present Windows=none,none,Present Windows
     Present Windows All=none,none,Present Windows All
     Show Desktop=none,none,Show Desktop
