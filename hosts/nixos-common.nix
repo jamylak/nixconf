@@ -81,6 +81,8 @@
         hide = [];
         minimize = [];
         close = [ "<Super>q" ];
+        switch-input-source = [];
+        switch-input-source-backward = [];
       };
       "org/gnome/desktop/peripherals/keyboard" = {
         delay = lib.hm.gvariant.mkUint32 168;
