@@ -11,6 +11,11 @@ in {
 
   home.stateVersion = "24.05";
 
+  # User session timezone for KDE and other apps.
+  home.sessionVariables = {
+    TZ = "Australia/Sydney";
+  };
+
   programs.home-manager.enable = true;
 
   # Example: install neovim
