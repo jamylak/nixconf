@@ -3,6 +3,14 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  fonts = {
+    fontconfig.enable = true;
+    packages = with pkgs; [
+      fira-code
+      fira-code-symbols
+    ];
+  };
+
   environment.systemPackages = [
 
   ];
