@@ -107,6 +107,33 @@ in {
     };
   };
 
+  wayland.windowManager.hyprland = lib.mkIf isNixos {
+    enable = true;
+    settings = {
+      general = {
+        layout = "dwindle";
+      };
+
+      "dwindle:force_split" = 2;
+
+      bind = [
+        # Toggle layout: master (stack-ish) <-> dwindle (vertical split only)
+        "CTRL ALT, SPACE, exec, sh -c 'layout=$(hyprctl getoption general:layout | awk \"{print \\$3}\"); if [ \"$layout\" = \"master\" ]; then hyprctl keyword general:layout dwindle; else hyprctl keyword general:layout master; fi'"
+        # Toggle all-float for the current workspace
+        "CTRL ALT, T, workspaceopt, allfloat"
+        # Workspace next/prev
+        "CTRL ALT, N, workspace, r+1"
+        "CTRL ALT, P, workspace, r-1"
+        # Focus next/prev
+        "CTRL ALT, F, cyclenext"
+        "CTRL ALT, B, cyclenext, prev"
+        # Resize active window left/right
+        "CTRL ALT, H, resizeactive, -150 0"
+        "CTRL ALT, L, resizeactive, 150 0"
+      ];
+    };
+  };
+
   xdg.configFile."nvim".source = nvimconf;
   xdg.configFile."dotfiles".source = dotfiles;
 
