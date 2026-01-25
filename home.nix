@@ -126,6 +126,7 @@ in {
     [Plugins]
     wobblywindowsEnabled=true
   '';
+  xdg.configFile."kwinrc".force = lib.mkIf isNixos true;
   xdg.configFile."kglobalshortcutsrc".text = lib.mkIf isNixos ''
     [kwin]
     Close Window=Meta+Q,none,Close Window
@@ -141,6 +142,7 @@ in {
     Walk Through Windows=Ctrl+Alt+F,none,Walk Through Windows
     Walk Through Windows (Reverse)=Ctrl+Alt+B,none,Walk Through Windows (Reverse)
   '';
+  xdg.configFile."kglobalshortcutsrc".force = lib.mkIf isNixos true;
   xdg.desktopEntries = lib.mkIf isNixos {
     brave-new-window = {
       name = "New Brave Window";
