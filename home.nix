@@ -156,6 +156,8 @@ in {
         "Switch Window Right" = "none,none,Switch Window Right";
         "Switch to Next Desktop" = "Ctrl+Alt+N,none,Switch to Next Desktop";
         "Switch to Previous Desktop" = "Ctrl+Alt+P,none,Switch to Previous Desktop";
+        "Window to Next Desktop" = "Meta+Ctrl+N,none,Window to Next Desktop";
+        "Window to Previous Desktop" = "Meta+Ctrl+P,none,Window to Previous Desktop";
         "Edit Tiles" = "none,,Toggle Tiles Editor";
         "Walk Through Windows" = "Ctrl+Alt+F,none,Walk Through Windows";
         "Walk Through Windows (Reverse)" = "Ctrl+Alt+B,none,Walk Through Windows (Reverse)";
