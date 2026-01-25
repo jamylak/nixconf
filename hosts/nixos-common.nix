@@ -25,7 +25,7 @@
       extraDefCfg = "process-unmapped-keys yes";
       config = ''
         (defsrc
-          lmet
+          lmet rmet
         )
 
         (defalias
@@ -33,7 +33,7 @@
         )
 
         (deflayer base
-          @smspc
+          @smspc @smspc
         )
       '';
     };
