@@ -130,6 +130,8 @@ in {
         # Resize active window left/right
         "CTRL ALT, H, resizeactive, -150 0"
         "CTRL ALT, L, resizeactive, 150 0"
+        # Exit Hyprland session
+        "CTRL ALT, Q, exec, hyprctl dispatch exit"
       ];
     };
   };
