@@ -42,7 +42,7 @@
         home-manager.lib.homeManagerConfiguration {
           pkgs = mkPkgs system;
           modules = [
-            plasma-manager.homeManagerModules.plasma-manager
+            plasma-manager.homeModules.plasma-manager
             ./home.nix
             homeModule
           ];
