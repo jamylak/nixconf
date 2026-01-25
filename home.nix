@@ -79,6 +79,7 @@ in {
     pkgs.brave
     pkgs.vlc
     pkgs.wl-clipboard
+    pkgs.rofi-wayland
   ]
   ) ++ lib.optionals (!isNixos) [
   ];
@@ -125,7 +126,6 @@ in {
     [Plugins]
     wobblywindowsEnabled=true
   '';
-
   xdg.desktopEntries = lib.mkIf isNixos {
     brave-new-window = {
       name = "New Brave Window";
@@ -135,6 +135,26 @@ in {
       icon = "brave-browser";
       terminal = false;
       categories = [ "Network" "WebBrowser" ];
+    };
+  };
+
+  wayland.windowManager.sway = {
+    enable = true;
+    config = {
+      modifier = "Mod4";
+      menu = "rofi -show drun";
+      keybindings = let
+        mod = "Mod4";
+      in {
+        "${mod}+q" = "kill";
+        "${mod}+space" = "exec rofi -show drun";
+        "Ctrl+Alt+space" = "layout toggle stacking splitv";
+        "Ctrl+Alt+n" = "workspace next";
+        "Ctrl+Alt+p" = "workspace prev";
+        "Ctrl+Alt+t" = "floating toggle";
+        "Ctrl+Alt+h" = "resize shrink width 50 px";
+        "Ctrl+Alt+l" = "resize grow width 50 px";
+      };
     };
   };
 
