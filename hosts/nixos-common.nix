@@ -65,6 +65,7 @@
         show-clipboard = [];
         show-all-apps = [];
         toggle-application-view = [];
+        toggle-overview = [ "<Super>space" ];
         switch-to-application-1 = [];
         switch-to-application-2 = [];
         switch-to-application-3 = [];
