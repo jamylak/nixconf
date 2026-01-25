@@ -130,6 +130,9 @@ in {
   xdg.configFile.".yabairc".source = "${dotfiles}/.yabairc";
   programs.plasma = lib.mkIf isNixos {
     enable = true;
+    shortcuts = {
+      "kwin"."Toggle Tiles Editor" = "none,none,Toggle Tiles Editor";
+    };
     configFile = {
       "kwinrc" = {
         "Plugins" = {
