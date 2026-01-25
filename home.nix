@@ -217,6 +217,24 @@ in {
       terminal = false;
       categories = [ "Utility" ];
     };
+    next-desktop = {
+      name = "Next Desktop";
+      genericName = "KWin Action";
+      comment = "Switch to the next virtual desktop";
+      exec = "next-desktop";
+      icon = "preferences-desktop-workspaces";
+      terminal = false;
+      categories = [ "Utility" ];
+    };
+    prev-desktop = {
+      name = "Previous Desktop";
+      genericName = "KWin Action";
+      comment = "Switch to the previous virtual desktop";
+      exec = "prev-desktop";
+      icon = "preferences-desktop-workspaces";
+      terminal = false;
+      categories = [ "Utility" ];
+    };
   };
 
   wayland.windowManager.sway = {
