@@ -74,6 +74,8 @@
         hide = [];
         minimize = [];
         close = [ "<Super>q" ];
+        switch-to-workspace-left = [ "<Ctrl><Alt>p" ];
+        switch-to-workspace-right = [ "<Ctrl><Alt>n" ];
       };
       "org/gnome/desktop/peripherals/keyboard" = {
         delay = lib.hm.gvariant.mkUint32 168;
