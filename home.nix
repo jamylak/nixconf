@@ -152,6 +152,9 @@ in {
         "Walk Through Windows" = "Ctrl+Alt+F,none,Walk Through Windows";
         "Walk Through Windows (Reverse)" = "Ctrl+Alt+B,none,Walk Through Windows (Reverse)";
       };
+      "plasmashell" = {
+        "show-on-mouse-pos" = [ ];
+      };
     };
     configFile = {
       "kwinrc" = {
