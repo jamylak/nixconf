@@ -159,6 +159,9 @@ in {
     Walk Through Windows=Ctrl+Alt+F,none,Walk Through Windows
     Walk Through Windows (Reverse)=Ctrl+Alt+B,none,Walk Through Windows (Reverse)
 
+    [org.kde.kwin]
+    Toggle Tiles Editor=none,none,Toggle Tiles Editor
+
     [org.kde.krunner]
     Run Command=Meta+Space,none,Run Command
   '';
