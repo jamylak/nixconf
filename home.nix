@@ -80,7 +80,7 @@ in {
     pkgs.vlc
     pkgs.wl-clipboard
     pkgs.wofi
-    pkgs.waybar
+    # pkgs.waybar
   ]
   ) ++ lib.optionals (!isNixos) [
   ];
@@ -121,7 +121,7 @@ in {
       exec-once = [
         "dbus-update-activation-environment --systemd --all"
         "systemctl --user import-environment --all"
-        "waybar"
+        # "waybar"
       ];
 
       general = {
