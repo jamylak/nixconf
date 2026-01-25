@@ -78,7 +78,7 @@ in {
     ghosttyPkg
     pkgs.brave
     pkgs.vlc
-    pkgs.qttools
+    pkgs.qt6.qttools
     pkgs.wl-clipboard
     pkgs.rofi
   ]
@@ -182,7 +182,7 @@ in {
       name = "Desktop Grid";
       genericName = "KWin Effect";
       comment = "Show the desktop grid view";
-      exec = "qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut \"Grid View\"";
+      exec = "qdbus6 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut \"Grid View\"";
       icon = "preferences-desktop";
       terminal = false;
       categories = [ "Desktop" "Utility" ];
