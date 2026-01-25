@@ -130,6 +130,9 @@ in {
   xdg.configFile.".yabairc".source = "${dotfiles}/.yabairc";
   programs.plasma = lib.mkIf isNixos {
     enable = true;
+    krunner = {
+      shortcuts.launch = "Meta";
+    };
     shortcuts = {};
     configFile = {
       "kwinrc" = {
@@ -170,9 +173,6 @@ in {
           "Toggle Tiles Editor" = "none,,Toggle Tiles Editor";
           "Walk Through Windows" = "Ctrl+Alt+F,none,Walk Through Windows";
           "Walk Through Windows (Reverse)" = "Ctrl+Alt+B,none,Walk Through Windows (Reverse)";
-        };
-        "org.kde.krunner" = {
-          "Run Command" = "Meta,none,Run Command";
         };
       };
       "kcminputrc" = {
