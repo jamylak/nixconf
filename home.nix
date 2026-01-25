@@ -134,6 +134,9 @@ in {
       shortcuts.launch = "Alt+Enter";
     };
     shortcuts = {
+      "org.kde.krunner.desktop" = {
+        "_launch" = [ "Alt+Space" "Meta" ];
+      };
       "kwin" = {
         "Close Window" = "Meta+Q,none,Close Window";
         "Overview" = "none,none,Overview";
