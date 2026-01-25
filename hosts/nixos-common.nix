@@ -10,6 +10,10 @@
     enable = true;
   };
 
+  programs.sway = {
+    enable = true;
+  };
+
   services.kanata = {
     enable = true;
     keyboards.default = {
