@@ -20,7 +20,7 @@
   };
 
   services.kanata = {
-    enable = true;
+    enable = false;
     keyboards.default = {
       extraDefCfg = "process-unmapped-keys yes";
       config = ''
