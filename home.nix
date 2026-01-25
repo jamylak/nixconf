@@ -161,6 +161,12 @@ in {
     Run Command=Meta+Space,none,Run Command
   '';
   xdg.configFile."kglobalshortcutsrc".force = lib.mkIf isNixos true;
+  xdg.configFile."kcminputrc".text = lib.mkIf isNixos ''
+    [Keyboard]
+    RepeatDelay=168
+    RepeatRate=43
+  '';
+  xdg.configFile."kcminputrc".force = lib.mkIf isNixos true;
   xdg.desktopEntries = lib.mkIf isNixos {
     brave-new-window = {
       name = "New Brave Window";
