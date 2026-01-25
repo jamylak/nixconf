@@ -131,11 +131,11 @@ in {
   programs.plasma = lib.mkIf isNixos {
     enable = true;
     krunner = {
-      shortcuts.launch = "Alt+Enter";
+      shortcuts.launch = "Meta";
     };
     shortcuts = {
       "org.kde.krunner.desktop" = {
-        "_launch" = [ "Alt+Space" "Meta" ];
+        "_launch" = [ "Alt+Space" ];
       };
       "kwin" = {
         "Close Window" = "Meta+Q,none,Close Window";
@@ -164,7 +164,7 @@ in {
           desktopgrid-cornersEnabled = true;
         };
         "ModifierOnlyShortcuts" = {
-          # Meta = "org.kde.krunner,/App,,toggleDisplay";
+          Meta = "org.kde.krunner.desktop,_launch,Meta";
         };
         "Effect-DesktopGrid" = {
           BorderActivate = 9;
