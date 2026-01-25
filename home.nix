@@ -169,7 +169,8 @@ in {
         "Walk Through Windows (Reverse)" = "Ctrl+Alt+B,none,Walk Through Windows (Reverse)";
       };
       "plasmashell" = {
-        "show-on-mouse-pos" = [ ];
+        "next activity" = "none,none,Walk through Activities";
+        "show-on-mouse-pos" = "none,none,Show Clipboard Items at Mouse Position";
       };
     };
     configFile = {
