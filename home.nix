@@ -128,50 +128,57 @@ in {
   xdg.configFile."btop/btop.conf".source = "${dotfiles}/btop/btop.conf";
   xdg.configFile."lazygit".source = "${dotfiles}/lazygit";
   xdg.configFile.".yabairc".source = "${dotfiles}/.yabairc";
-  xdg.configFile."kwinrc".text = lib.mkIf isNixos ''
-    [Plugins]
-    slideEnabled=false
-    wobblywindowsEnabled=true
-    desktopgrid-cornersEnabled=true
-
-    [Effect-DesktopGrid]
-    BorderActivate=9
-
-    [ElectricBorders]
-    Bottom=None
-    BottomLeft=None
-    BottomRight=None
-    Left=None
-    Right=None
-    Top=None
-    TopLeft=None
-    TopRight=None
-  '';
-  xdg.configFile."kwinrc".force = lib.mkIf isNixos true;
-  xdg.configFile."kglobalshortcutsrc".text = lib.mkIf isNixos ''
-    [kwin]
-    Close Window=Meta+Q,none,Close Window
-    Overview=none,none,Overview
-    Grid View=Ctrl+Up,none,Grid View
-    Present Windows=none,none,Present Windows
-    Present Windows All=none,none,Present Windows All
-    Show Desktop=none,none,Show Desktop
-    Switch Window Up=none,none,Switch Window Up
-    Switch Window Down=none,none,Switch Window Down
-    Switch Window Left=none,none,Switch Window Left
-    Switch Window Right=none,none,Switch Window Right
-    Toggle Tiles Editor=none,none,Toggle Tiles Editor
-    Walk Through Windows=Ctrl+Alt+F,none,Walk Through Windows
-    Walk Through Windows (Reverse)=Ctrl+Alt+B,none,Walk Through Windows (Reverse)
-    Run Command=Meta+Space,none,Run Command
-  '';
-  xdg.configFile."kglobalshortcutsrc".force = lib.mkIf isNixos true;
-  xdg.configFile."kcminputrc".text = lib.mkIf isNixos ''
-    [Keyboard]
-    RepeatDelay=168
-    RepeatRate=43
-  '';
-  xdg.configFile."kcminputrc".force = lib.mkIf isNixos true;
+  programs.plasma = lib.mkIf isNixos {
+    enable = true;
+    configFile = {
+      "kwinrc" = {
+        "Plugins" = {
+          slideEnabled = false;
+          wobblywindowsEnabled = true;
+          desktopgrid-cornersEnabled = true;
+        };
+        "Effect-DesktopGrid" = {
+          BorderActivate = 9;
+        };
+        "ElectricBorders" = {
+          Bottom = "None";
+          BottomLeft = "None";
+          BottomRight = "None";
+          Left = "None";
+          Right = "None";
+          Top = "None";
+          TopLeft = "None";
+          TopRight = "None";
+        };
+      };
+      "kglobalshortcutsrc" = {
+        "kwin" = {
+          "Close Window" = "Meta+Q,none,Close Window";
+          "Overview" = "none,none,Overview";
+          "Grid View" = "Ctrl+Up,none,Grid View";
+          "Present Windows" = "none,none,Present Windows";
+          "Present Windows All" = "none,none,Present Windows All";
+          "Show Desktop" = "none,none,Show Desktop";
+          "Switch Window Up" = "none,none,Switch Window Up";
+          "Switch Window Down" = "none,none,Switch Window Down";
+          "Switch Window Left" = "none,none,Switch Window Left";
+          "Switch Window Right" = "none,none,Switch Window Right";
+          "Toggle Tiles Editor" = "none,none,Toggle Tiles Editor";
+          "Walk Through Windows" = "Ctrl+Alt+F,none,Walk Through Windows";
+          "Walk Through Windows (Reverse)" = "Ctrl+Alt+B,none,Walk Through Windows (Reverse)";
+        };
+        "org.kde.krunner" = {
+          "Run Command" = "Meta+Space,none,Run Command";
+        };
+      };
+      "kcminputrc" = {
+        "Keyboard" = {
+          RepeatDelay = 168;
+          RepeatRate = 43;
+        };
+      };
+    };
+  };
   xdg.desktopEntries = lib.mkIf isNixos {
     brave-new-window = {
       name = "New Brave Window";

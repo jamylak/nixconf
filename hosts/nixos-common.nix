@@ -1,4 +1,4 @@
-{ nvimconf, dotfiles, ghostty, fzf-fish, chomper, pkgs, ... }: {
+{ nvimconf, dotfiles, ghostty, fzf-fish, chomper, plasma-manager, pkgs, ... }: {
   system.stateVersion = "24.05";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -47,6 +47,9 @@
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
+  home-manager.sharedModules = [
+    plasma-manager.homeManagerModules.plasma-manager
+  ];
   home-manager.extraSpecialArgs = {
     inherit nvimconf;
     inherit dotfiles;

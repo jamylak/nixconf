@@ -5,6 +5,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    plasma-manager.url = "github:nix-community/plasma-manager";
+    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
     nvimconf = {
       url = "github:jamylak/nvimconf";
       flake = false;
@@ -25,7 +27,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nvimconf, dotfiles, ghostty, fzf-fish, chomper, ... }:
+  outputs = { self, nixpkgs, home-manager, plasma-manager, nvimconf, dotfiles, ghostty, fzf-fish, chomper, ... }:
     let
       mkPkgs = system: import nixpkgs { inherit system; };
       hmArgs = {
@@ -34,11 +36,13 @@
         inherit ghostty;
         inherit fzf-fish;
         inherit chomper;
+        inherit plasma-manager;
       };
       mkHome = { system, homeModule }:
         home-manager.lib.homeManagerConfiguration {
           pkgs = mkPkgs system;
           modules = [
+            plasma-manager.homeManagerModules.plasma-manager
             ./home.nix
             homeModule
           ];
