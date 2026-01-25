@@ -124,6 +124,7 @@ in {
   xdg.configFile.".yabairc".source = "${dotfiles}/.yabairc";
   xdg.configFile."kwinrc".text = lib.mkIf isNixos ''
     [Plugins]
+    slideEnabled=false
     wobblywindowsEnabled=true
   '';
   xdg.configFile."kwinrc".force = lib.mkIf isNixos true;
