@@ -142,6 +142,9 @@ in {
   xdg.configFile.".yabairc".source = "${dotfiles}/.yabairc";
   programs.plasma = lib.mkIf isNixos {
     enable = true;
+    kwin.virtualDesktops = {
+      number = 6;
+    };
     # krunner = {
     #   shortcuts.launch = "Meta+Space";
     # };
