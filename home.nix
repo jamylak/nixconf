@@ -145,7 +145,7 @@ in {
         "Switch Window Down" = "none,none,Switch Window Down";
         "Switch Window Left" = "none,none,Switch Window Left";
         "Switch Window Right" = "none,none,Switch Window Right";
-        "Toggle Tiles Editor" = "none,,Toggle Tiles Editor";
+        "Edit Tiles" = "none,,Toggle Tiles Editor";
         "Walk Through Windows" = "Ctrl+Alt+F,none,Walk Through Windows";
         "Walk Through Windows (Reverse)" = "Ctrl+Alt+B,none,Walk Through Windows (Reverse)";
       };
