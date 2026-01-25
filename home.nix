@@ -150,6 +150,8 @@ in {
         "CTRL ALT, L, resizeactive, 150 0"
         # Close focused window
         "SUPER, Q, killactive"
+        # Switch to TTY2 (requires chvt permission or sudo)
+        # "CTRL ALT, W, exec, chvt 2"
         # Exit Hyprland session
         "CTRL ALT, Q, exec, hyprctl dispatch exit"
       ];
