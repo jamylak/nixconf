@@ -168,7 +168,7 @@ in {
           "Walk Through Windows (Reverse)" = "Ctrl+Alt+B,none,Walk Through Windows (Reverse)";
         };
         "org.kde.krunner" = {
-          "Run Command" = "Meta+Space,none,Run Command";
+          "Run Command" = "Meta,none,Run Command";
         };
       };
       "kcminputrc" = {
