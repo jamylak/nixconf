@@ -142,6 +142,9 @@ in {
     Switch Window Right=none,none,Switch Window Right
     Walk Through Windows=Ctrl+Alt+F,none,Walk Through Windows
     Walk Through Windows (Reverse)=Ctrl+Alt+B,none,Walk Through Windows (Reverse)
+
+    [org.kde.krunner]
+    Run Command=Meta+Space,none,Run Command
   '';
   xdg.configFile."kglobalshortcutsrc".force = lib.mkIf isNixos true;
   xdg.desktopEntries = lib.mkIf isNixos {
