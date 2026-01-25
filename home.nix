@@ -121,6 +121,10 @@ in {
   xdg.configFile."btop/btop.conf".source = "${dotfiles}/btop/btop.conf";
   xdg.configFile."lazygit".source = "${dotfiles}/lazygit";
   xdg.configFile.".yabairc".source = "${dotfiles}/.yabairc";
+  xdg.configFile."kwinrc".text = lib.mkIf isNixos ''
+    [Plugins]
+    wobblywindowsEnabled=true
+  '';
 
   xdg.desktopEntries = lib.mkIf isNixos {
     brave-new-window = {
