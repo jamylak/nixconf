@@ -10,6 +10,32 @@
     enable = true;
   };
 
+  programs.hyprland.enable = true;
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  };
+
+  services.kanata = {
+    enable = true;
+    keyboards.default = {
+      extraDefCfg = "process-unmapped-keys yes";
+      config = ''
+        (defsrc
+          lmet
+        )
+
+        (defalias
+          smspc (tap-hold 200 200 (multi lmet spc) lmet)
+        )
+
+        (deflayer base
+          @smspc
+        )
+      '';
+    };
+  };
+
   users.users.james = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
@@ -59,6 +85,7 @@
         show-clipboard = [];
         show-all-apps = [];
         toggle-application-view = [];
+        toggle-overview = [ "<Super>space" ];
         switch-to-application-1 = [];
         switch-to-application-2 = [];
         switch-to-application-3 = [];
@@ -74,6 +101,8 @@
         hide = [];
         minimize = [];
         close = [ "<Super>q" ];
+        switch-input-source = [];
+        switch-input-source-backward = [];
       };
       "org/gnome/desktop/peripherals/keyboard" = {
         delay = lib.hm.gvariant.mkUint32 168;
