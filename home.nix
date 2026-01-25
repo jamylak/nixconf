@@ -131,7 +131,7 @@ in {
   programs.plasma = lib.mkIf isNixos {
     enable = true;
     shortcuts = {
-      "kwin"."Toggle Tiles Editor" = "none,none,Toggle Tiles Editor";
+      "services/org.kde.krunner.desktop"._launch = "None";
     };
     configFile = {
       "kwinrc" = {
@@ -139,6 +139,9 @@ in {
           slideEnabled = false;
           wobblywindowsEnabled = true;
           desktopgrid-cornersEnabled = true;
+        };
+        "ModifierOnlyShortcuts" = {
+          Meta = "org.kde.krunner,/App,,toggleDisplay";
         };
         "Effect-DesktopGrid" = {
           BorderActivate = 9;
