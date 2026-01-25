@@ -131,7 +131,7 @@ in {
   programs.plasma = lib.mkIf isNixos {
     enable = true;
     krunner = {
-      shortcuts.launch = "Meta";
+      shortcuts.launch = "Meta+Space";
     };
     shortcuts = {
       "org.kde.krunner.desktop" = {
