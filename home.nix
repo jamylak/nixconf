@@ -160,7 +160,7 @@ in {
         "Switch Window Down" = "none,none,Switch Window Down";
         "Switch Window Left" = "none,none,Switch Window Left";
         "Switch Window Right" = "none,none,Switch Window Right";
-        "Switch to Next Desktop" = "Ctrl+Alt+N,none,Switch to Next Desktop";
+        "Switch to Next Desktop" = "Ctrl+Alt+N,Ctrl+Alt+.,Switch to Next Desktop";
         "Switch to Previous Desktop" = "Ctrl+Alt+P,none,Switch to Previous Desktop";
         "Window to Next Desktop" = "Meta+Ctrl+N,none,Window to Next Desktop";
         "Window to Previous Desktop" = "Meta+Ctrl+P,none,Window to Previous Desktop";
