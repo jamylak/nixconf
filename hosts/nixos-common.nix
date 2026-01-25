@@ -1,5 +1,6 @@
 { nvimconf, dotfiles, ghostty, fzf-fish, chomper, plasma-manager, pkgs, ... }: {
   system.stateVersion = "24.05";
+  time.timeZone = "Australia/Sydney";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
