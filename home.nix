@@ -130,12 +130,12 @@ in {
   xdg.configFile.".yabairc".source = "${dotfiles}/.yabairc";
   programs.plasma = lib.mkIf isNixos {
     enable = true;
-    krunner = {
-      shortcuts.launch = "Meta+Space";
-    };
+    # krunner = {
+    #   shortcuts.launch = "Meta+Space";
+    # };
     shortcuts = {
       "org.kde.krunner.desktop" = {
-        "_launch" = [ "Alt+Space" ];
+        "_launch" = [ "Alt+Space" "Meta+Space" ];
       };
       "kwin" = {
         "Close Window" = "Meta+Q,none,Close Window";
