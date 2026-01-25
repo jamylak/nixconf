@@ -126,6 +126,20 @@ in {
     [Plugins]
     slideEnabled=false
     wobblywindowsEnabled=true
+    desktopgrid-cornersEnabled=true
+
+    [Effect-DesktopGrid]
+    BorderActivate=9
+
+    [ElectricBorders]
+    Bottom=None
+    BottomLeft=None
+    BottomRight=None
+    Left=None
+    Right=None
+    Top=None
+    TopLeft=None
+    TopRight=None
   '';
   xdg.configFile."kwinrc".force = lib.mkIf isNixos true;
   xdg.configFile."kglobalshortcutsrc".text = lib.mkIf isNixos ''
