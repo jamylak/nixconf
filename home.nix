@@ -164,11 +164,13 @@ in {
     config = {
       modifier = "Mod4";
       menu = "rofi -show drun";
+      terminal = "kitty";
       keybindings = let
         mod = "Mod4";
       in {
         "${mod}+q" = "kill";
         "${mod}+space" = "exec rofi -show drun";
+        "${mod}+Return" = "exec kitty";
         "Ctrl+Alt+space" = "layout toggle stacking splitv";
         "Ctrl+Alt+n" = "workspace next";
         "Ctrl+Alt+p" = "workspace prev";
