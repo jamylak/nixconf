@@ -18,23 +18,22 @@
 
   services.kanata = {
     enable = true;
-    keyboards.default.config = ''
-      (defcfg
-        process-unmapped-keys yes
-      )
+    keyboards.default = {
+      extraDefCfg = "process-unmapped-keys yes";
+      config = ''
+        (defsrc
+          lmet
+        )
 
-      (defsrc
-        lmet
-      )
+        (defalias
+          smspc (tap-hold 200 200 (multi lmet spc) lmet)
+        )
 
-      (defalias
-        smspc (tap-hold 200 200 (multi lmet spc) lmet)
-      )
-
-      (deflayer base
-        @smspc
-      )
-    '';
+        (deflayer base
+          @smspc
+        )
+      '';
+    };
   };
 
   users.users.james = {
