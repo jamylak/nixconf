@@ -92,6 +92,12 @@ in {
     (pkgs.writeShellScriptBin "prev-desktop" ''
       qdbus org.kde.KWin /KWin org.kde.KWin.previousDesktop
     '')
+    (pkgs.writeShellScriptBin "window-next-desktop" ''
+      qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Window to Next Desktop"
+    '')
+    (pkgs.writeShellScriptBin "window-prev-desktop" ''
+      qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Window to Previous Desktop"
+    '')
   ]
   ) ++ lib.optionals (!isNixos) [
   ];
@@ -231,6 +237,24 @@ in {
       genericName = "KWin Action";
       comment = "Switch to the previous virtual desktop";
       exec = "prev-desktop";
+      icon = "preferences-desktop-workspaces";
+      terminal = false;
+      categories = [ "Utility" ];
+    };
+    window-next-desktop = {
+      name = "Window to Next Desktop";
+      genericName = "KWin Action";
+      comment = "Move the active window to the next virtual desktop";
+      exec = "window-next-desktop";
+      icon = "preferences-desktop-workspaces";
+      terminal = false;
+      categories = [ "Utility" ];
+    };
+    window-prev-desktop = {
+      name = "Window to Previous Desktop";
+      genericName = "KWin Action";
+      comment = "Move the active window to the previous virtual desktop";
+      exec = "window-prev-desktop";
       icon = "preferences-desktop-workspaces";
       terminal = false;
       categories = [ "Utility" ];
