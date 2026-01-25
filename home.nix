@@ -130,9 +130,7 @@ in {
   xdg.configFile.".yabairc".source = "${dotfiles}/.yabairc";
   programs.plasma = lib.mkIf isNixos {
     enable = true;
-    shortcuts = {
-      "services/org.kde.krunner.desktop"._launch = "None";
-    };
+    shortcuts = {};
     configFile = {
       "kwinrc" = {
         "Plugins" = {
