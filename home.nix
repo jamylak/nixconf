@@ -168,9 +168,9 @@ in {
         "Walk Through Windows" = "Ctrl+Alt+F";
         "Walk Through Windows (Reverse)" = "Ctrl+Alt+B";
       };
-      "plasmashell" = {
-        "next activity" = "none,none,Walk through Activities";
-        "show-on-mouse-pos" = "none,none,Show Clipboard Items at Mouse Position";
+      plasmashell = {
+        "next activity" = [ ];
+        "show-on-mouse-pos" = [ ];
       };
     };
     configFile = {
