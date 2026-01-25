@@ -79,8 +79,6 @@ in {
     pkgs.brave
     pkgs.vlc
     pkgs.wl-clipboard
-    pkgs.wofi
-    # pkgs.waybar
   ]
   ) ++ lib.optionals (!isNixos) [
   ];
@@ -106,55 +104,6 @@ in {
       safe = {
         directory = "*";
       };
-    };
-  };
-
-  wayland.windowManager.hyprland = lib.mkIf isNixos {
-    enable = true;
-    settings = {
-      env = [
-        "XDG_CURRENT_DESKTOP,Hyprland"
-        "XDG_SESSION_DESKTOP,Hyprland"
-        "XDG_SESSION_TYPE,wayland"
-      ];
-
-      exec-once = [
-        "dbus-update-activation-environment --systemd --all"
-        "systemctl --user import-environment --all"
-        # "waybar"
-      ];
-
-      general = {
-        layout = "dwindle";
-      };
-
-      "dwindle:force_split" = 2;
-
-      bind = [
-        # Toggle layout: master (stack-ish) <-> dwindle (vertical split only)
-        "CTRL ALT, SPACE, exec, sh -c 'layout=$(hyprctl getoption general:layout | awk \"{print \\$3}\"); if [ \"$layout\" = \"master\" ]; then hyprctl keyword general:layout dwindle; else hyprctl keyword general:layout master; fi'"
-        # App launcher (Super is tapped via kanata -> Super+Space)
-        "SUPER, SPACE, exec, wofi --show drun"
-        # Terminal
-        "SUPER, RETURN, exec, kitty"
-        # Toggle all-float for the current workspace
-        "CTRL ALT, T, workspaceopt, allfloat"
-        # Workspace next/prev
-        "CTRL ALT, N, workspace, r+1"
-        "CTRL ALT, P, workspace, r-1"
-        # Focus next/prev
-        "CTRL ALT, F, cyclenext"
-        "CTRL ALT, B, cyclenext, prev"
-        # Resize active window left/right
-        "CTRL ALT, H, resizeactive, -150 0"
-        "CTRL ALT, L, resizeactive, 150 0"
-        # Close focused window
-        "SUPER, Q, killactive"
-        # Switch to TTY2 (requires chvt permission or sudo)
-        # "CTRL ALT, W, exec, chvt 2"
-        # Exit Hyprland session
-        "CTRL ALT, Q, exec, hyprctl dispatch exit"
-      ];
     };
   };
 
