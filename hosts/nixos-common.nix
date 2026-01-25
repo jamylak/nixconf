@@ -16,6 +16,12 @@
     extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   };
 
+  services.keyd.enable = true;
+  environment.etc."keyd/default.conf".text = ''
+    [main]
+    leftmeta = overload(meta, meta+space)
+  '';
+
   users.users.james = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
