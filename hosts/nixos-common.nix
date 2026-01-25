@@ -16,7 +16,7 @@
 
   programs.ssh = {
     # Use Plasma's askpass to avoid conflicts with GNOME seahorse.
-    askPassword = "${pkgs.ksshaskpass}/bin/ksshaskpass";
+    askPassword = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
   };
 
   services.kanata = {
