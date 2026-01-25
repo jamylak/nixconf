@@ -132,7 +132,7 @@ in {
         # App launcher (Super is tapped via keyd -> Super+Space)
         "SUPER, SPACE, exec, wofi --show drun"
         # Terminal
-        "SUPER, RETURN, exec, ghostty"
+        "SUPER, RETURN, exec, kitty"
         # Toggle all-float for the current workspace
         "CTRL ALT, T, workspaceopt, allfloat"
         # Workspace next/prev
