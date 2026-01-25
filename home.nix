@@ -131,7 +131,7 @@ in {
       bind = [
         # Toggle layout: master (stack-ish) <-> dwindle (vertical split only)
         "CTRL ALT, SPACE, exec, sh -c 'layout=$(hyprctl getoption general:layout | awk \"{print \\$3}\"); if [ \"$layout\" = \"master\" ]; then hyprctl keyword general:layout dwindle; else hyprctl keyword general:layout master; fi'"
-        # App launcher (Super is tapped via keyd -> Super+Space)
+        # App launcher (Super is tapped via kanata -> Super+Space)
         "SUPER, SPACE, exec, wofi --show drun"
         # Terminal
         "SUPER, RETURN, exec, kitty"

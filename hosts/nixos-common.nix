@@ -16,11 +16,26 @@
     extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   };
 
-  services.keyd.enable = true;
-  environment.etc."keyd/default.conf".text = ''
-    [main]
-    leftmeta = overload(meta, meta+space)
-  '';
+  services.kanata = {
+    enable = true;
+    keyboards.default.config = ''
+      (defcfg
+        process-unmapped-keys yes
+      )
+
+      (defsrc
+        lmet
+      )
+
+      (defalias
+        smspc (tap-hold 200 200 (multi lmet spc) lmet)
+      )
+
+      (deflayer base
+        @smspc
+      )
+    '';
+  };
 
   users.users.james = {
     isNormalUser = true;
