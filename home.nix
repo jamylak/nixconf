@@ -185,7 +185,7 @@ in {
       exec = "qdbus6 org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut \"Grid View\"";
       icon = "preferences-desktop";
       terminal = false;
-      categories = [ "Desktop" "Utility" ];
+      categories = [ "Utility" ];
     };
   };
 
