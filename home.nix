@@ -79,6 +79,7 @@ in {
     pkgs.brave
     pkgs.vlc
     pkgs.wl-clipboard
+    pkgs.wofi
   ]
   ) ++ lib.optionals (!isNixos) [
   ];
