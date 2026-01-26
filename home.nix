@@ -158,7 +158,6 @@ in
   xdg.configFile.".yabairc".source = "${dotfiles}/.yabairc";
   programs.plasma = lib.mkIf isNixos {
     enable = true;
-    kwin.scripts = [ pkgs.krohnkite ];
     kwin.virtualDesktops = {
       number = 6;
     };
@@ -190,15 +189,13 @@ in
         "Edit Tiles" = [ ];
         "Walk Through Windows" = [ ];
         "Walk Through Windows (Reverse)" = [ ];
-      };
-      "krohnkite" = {
-        "Next Layout" = "Ctrl+Alt+Space";
-        "Toggle Floating" = "Ctrl+Alt+T";
-        "Increase" = "Ctrl+Alt+L";
-        "Decrease" = "Ctrl+Alt+H";
-        "Focus Next" = "Ctrl+Alt+F";
-        "Focus Previous" = "Ctrl+Alt+B";
-        "Set as Master" = "Ctrl+Alt+Return";
+        "Krohnkite: Next Layout" = "Ctrl+Alt+Space";
+        "Krohnkite: Toggle Floating" = "Ctrl+Alt+T";
+        "Krohnkite: Increase" = "Ctrl+Alt+L";
+        "Krohnkite: Decrease" = "Ctrl+Alt+H";
+        "Krohnkite: Focus Next" = "Ctrl+Alt+F";
+        "Krohnkite: Focus Previous" = "Ctrl+Alt+B";
+        "Krohnkite: Set as Master" = "Ctrl+Alt+Return";
       };
       plasmashell = {
         "next activity" = [ ];
