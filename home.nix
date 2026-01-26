@@ -234,7 +234,14 @@ in
         name = "Krohnkite: Next Layout";
         key = "Ctrl+Alt+Space";
         command = ''
-          gdbus call --session --dest org.kde.kglobalaccel --object-path /component/kwin --method org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteNextLayout"
+          state_file="$HOME/.cache/krohnkite-layout"
+          if [ -f "$state_file" ] && [ "$(cat "$state_file")" = "monocle" ]; then
+            gdbus call --session --dest org.kde.kglobalaccel --object-path /component/kwin --method org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteTreeColumnLayout"
+            printf "columns" > "$state_file"
+          else
+            gdbus call --session --dest org.kde.kglobalaccel --object-path /component/kwin --method org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteMonocleLayout"
+            printf "monocle" > "$state_file"
+          fi
         '';
       };
       krohnkiteToggleFloating = {
