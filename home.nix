@@ -202,7 +202,7 @@ in
         "KrohnkiteGrowHeight" = [ ];
         "KrohnkiteIncrease" = "Ctrl+Alt+L";
         "KrohnkiteMonocleLayout" = [ ];
-        "KrohnkiteNextLayout" = "Ctrl+Alt+Space";
+        "KrohnkiteNextLayout" = [ ];
         "KrohnkitePreviousLayout" = [ ];
         "KrohnkiteQuarterLayout" = [ ];
         "KrohnkiteRotate" = [ ];
