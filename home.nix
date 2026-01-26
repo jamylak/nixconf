@@ -248,14 +248,14 @@ in
         name = "Krohnkite: Increase";
         key = "Ctrl+Alt+L";
         command = ''
-          gdbus call --session --dest org.kde.kglobalaccel --object-path /component/kwin --method org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteShrinkWidth"
+          gdbus call --session --dest org.kde.kglobalaccel --object-path /component/kwin --method org.kde.kglobalaccel.Component.invokeShortcut "KrohnkitegrowWidth"
         '';
       };
       krohnkiteDecrease = {
         name = "Krohnkite: Decrease";
         key = "Ctrl+Alt+H";
         command = ''
-          gdbus call --session --dest org.kde.kglobalaccel --object-path /component/kwin --method org.kde.kglobalaccel.Component.invokeShortcut "KrohnkitegrowWidth"
+          gdbus call --session --dest org.kde.kglobalaccel --object-path /component/kwin --method org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteShrinkWidth"
         '';
       };
       krohnkiteFocusNext = {
