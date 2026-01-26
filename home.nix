@@ -287,21 +287,21 @@ in
           wobblywindowsEnabled = true;
           desktopgrid-cornersEnabled = true;
           krohnkiteEnabled = true;
-          "Script-krohnkite" = {
-            monocleLayoutOrder = 1;
-            columnsLayoutOrder = 2;
-            enableColumnsLayout = true;
-            tileLayoutOrder = 0;
-            threeColumnLayoutOrder = 0;
-            spiralLayoutOrder = 0;
-            quarterLayoutOrder = 0;
-            stackedLayoutOrder = 0;
-            spreadLayoutOrder = 0;
-            floatingLayoutOrder = 0;
-            stairLayoutOrder = 0;
-            binaryTreeLayoutOrder = 0;
-            cascadeLayoutOrder = 0;
-          };
+        };
+        "Script-krohnkite" = {
+          monocleLayoutOrder = 1;
+          columnsLayoutOrder = 2;
+          enableColumnsLayout = true;
+          tileLayoutOrder = 0;
+          threeColumnLayoutOrder = 0;
+          spiralLayoutOrder = 0;
+          quarterLayoutOrder = 0;
+          stackedLayoutOrder = 0;
+          spreadLayoutOrder = 0;
+          floatingLayoutOrder = 0;
+          stairLayoutOrder = 0;
+          binaryTreeLayoutOrder = 0;
+          cascadeLayoutOrder = 0;
         };
         "ModifierOnlyShortcuts" = {
           Meta = "org.kde.krunner.desktop,_launch,Meta";
