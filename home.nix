@@ -234,56 +234,49 @@ in
         name = "Krohnkite: Next Layout";
         key = "Ctrl+Alt+Space";
         command = ''
-          qdbus org.kde.kglobalaccel /component/kwin \
-            org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteNextLayout"
+          qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteNextLayout"
         '';
       };
       krohnkiteToggleFloating = {
         name = "Krohnkite: Toggle Floating";
         key = "Ctrl+Alt+T";
         command = ''
-          qdbus org.kde.kglobalaccel /component/kwin \
-            org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteToggleFloating"
+          qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteToggleFloating"
         '';
       };
       krohnkiteIncrease = {
         name = "Krohnkite: Increase";
         key = "Ctrl+Alt+L";
         command = ''
-          qdbus org.kde.kglobalaccel /component/kwin \
-            org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteIncrease"
+          qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteIncrease"
         '';
       };
       krohnkiteDecrease = {
         name = "Krohnkite: Decrease";
         key = "Ctrl+Alt+H";
         command = ''
-          qdbus org.kde.kglobalaccel /component/kwin \
-            org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteDecrease"
+          qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteDecrease"
         '';
       };
       krohnkiteFocusNext = {
         name = "Krohnkite: Focus Next";
         key = "Ctrl+Alt+F";
         command = ''
-          qdbus org.kde.kglobalaccel /component/kwin \
-            org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteFocusNext"
+          qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteFocusNext"
         '';
       };
       krohnkiteFocusPrev = {
         name = "Krohnkite: Focus Previous";
         key = "Ctrl+Alt+B";
         command = ''
-          qdbus org.kde.kglobalaccel /component/kwin \
-            org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteFocusPrev"
+          qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteFocusPrev"
         '';
       };
       krohnkiteSetMaster = {
         name = "Krohnkite: Set as Master";
         key = "Ctrl+Alt+Return";
         command = ''
-          qdbus org.kde.kglobalaccel /component/kwin \
-            org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteSetMaster"
+          qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteSetMaster"
         '';
       };
     };
