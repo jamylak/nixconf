@@ -298,7 +298,7 @@ in
           quarterLayoutOrder = 0;
           stackedLayoutOrder = 0;
           spreadLayoutOrder = 0;
-          floatingLayoutOrder = 0;
+          floatingLayoutOrder = 3;
           stairLayoutOrder = 0;
           binaryTreeLayoutOrder = 0;
           cascadeLayoutOrder = 0;
