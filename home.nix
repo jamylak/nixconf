@@ -241,7 +241,7 @@ in
         name = "Krohnkite: Toggle Floating";
         key = "Ctrl+Alt+T";
         command = ''
-          gdbus call --session --dest org.kde.kglobalaccel --object-path /component/kwin --method org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteToggleFloating"
+          gdbus call --session --dest org.kde.kglobalaccel --object-path /component/kwin --method org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteToggleFloat"
         '';
       };
       krohnkiteIncrease = {
