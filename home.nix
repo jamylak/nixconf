@@ -114,6 +114,19 @@ in
     (pkgs.writeShellScriptBin "window-prev-desktop" ''
       qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Window to Previous Desktop"
     '')
+    (pkgs.writeShellScriptBin "krohnkite-toggle" ''
+      set -euo pipefail
+
+      current="$(kreadconfig6 --file kwinrc --group Plugins --key krohnkiteEnabled || true)"
+      if [ "$current" = "true" ]; then
+        next="false"
+      else
+        next="true"
+      fi
+
+      kwriteconfig6 --file kwinrc --group Plugins --key krohnkiteEnabled "$next"
+      qdbus org.kde.KWin /KWin reconfigure >/dev/null 2>&1
+    '')
   ])
   ++ lib.optionals (!isNixos) [
   ];
@@ -237,11 +250,11 @@ in
           gdbus call --session --dest org.kde.kglobalaccel --object-path /component/kwin --method org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteNextLayout"
         '';
       };
-      krohnkiteToggleFloating = {
-        name = "Krohnkite: Toggle Floating";
+      krohnkiteToggleEnabled = {
+        name = "Krohnkite: Toggle Enabled";
         key = "Ctrl+Alt+T";
         command = ''
-          gdbus call --session --dest org.kde.kglobalaccel --object-path /component/kwin --method org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteToggleFloating"
+          krohnkite-toggle
         '';
       };
       krohnkiteIncrease = {
