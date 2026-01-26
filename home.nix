@@ -101,6 +101,7 @@ in
     pkgs.qt6.qttools
     pkgs.wl-clipboard
     pkgs.rofi
+    pkgs.krohnkite
     (pkgs.writeShellScriptBin "next-desktop" ''
       qdbus org.kde.KWin /KWin org.kde.KWin.nextDesktop
     '')
@@ -157,6 +158,7 @@ in
   xdg.configFile.".yabairc".source = "${dotfiles}/.yabairc";
   programs.plasma = lib.mkIf isNixos {
     enable = true;
+    kwin.scripts = [ pkgs.krohnkite ];
     kwin.virtualDesktops = {
       number = 6;
     };
@@ -186,8 +188,17 @@ in
         "Window to Next Desktop" = "Meta+Ctrl+N";
         "Window to Previous Desktop" = "Meta+Ctrl+P";
         "Edit Tiles" = [ ];
-        "Walk Through Windows" = "Ctrl+Alt+F";
-        "Walk Through Windows (Reverse)" = "Ctrl+Alt+B";
+        "Walk Through Windows" = [ ];
+        "Walk Through Windows (Reverse)" = [ ];
+      };
+      "krohnkite" = {
+        "Next Layout" = "Ctrl+Alt+Space";
+        "Toggle Floating" = "Ctrl+Alt+T";
+        "Increase" = "Ctrl+Alt+L";
+        "Decrease" = "Ctrl+Alt+H";
+        "Focus Next" = "Ctrl+Alt+F";
+        "Focus Previous" = "Ctrl+Alt+B";
+        "Set as Master" = "Ctrl+Alt+Return";
       };
       plasmashell = {
         "next activity" = [ ];
@@ -200,6 +211,7 @@ in
           slideEnabled = false;
           wobblywindowsEnabled = true;
           desktopgrid-cornersEnabled = true;
+          krohnkiteEnabled = true;
         };
         "ModifierOnlyShortcuts" = {
           Meta = "org.kde.krunner.desktop,_launch,Meta";
