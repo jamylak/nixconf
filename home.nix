@@ -101,6 +101,7 @@ in
     pkgs.qt6.qttools
     pkgs.wl-clipboard
     pkgs.rofi
+    pkgs.kdePackages.krohnkite
     (pkgs.writeShellScriptBin "next-desktop" ''
       qdbus org.kde.KWin /KWin org.kde.KWin.nextDesktop
     '')
@@ -186,8 +187,41 @@ in
         "Window to Next Desktop" = "Meta+Ctrl+N";
         "Window to Previous Desktop" = "Meta+Ctrl+P";
         "Edit Tiles" = [ ];
-        "Walk Through Windows" = "Ctrl+Alt+F";
-        "Walk Through Windows (Reverse)" = "Ctrl+Alt+B";
+        "Walk Through Windows" = [ ];
+        "Walk Through Windows (Reverse)" = [ ];
+        "KrohnkiteBTreeLayout" = [ ];
+        "KrohnkiteDecrease" = [ ];
+        "KrohnkiteFloatAll" = [ ];
+        "KrohnkiteFloatingLayout" = [ ];
+        "KrohnkiteFocusDown" = [ ];
+        "KrohnkiteFocusLeft" = [ ];
+        "KrohnkiteFocusNext" = [ ];
+        "KrohnkiteFocusPrev" = [ ];
+        "KrohnkiteFocusRight" = [ ];
+        "KrohnkiteFocusUp" = [ ];
+        "KrohnkiteGrowHeight" = [ ];
+        "KrohnkiteIncrease" = [ ];
+        "KrohnkiteMonocleLayout" = [ ];
+        "KrohnkiteNextLayout" = [ ];
+        "KrohnkitePreviousLayout" = [ ];
+        "KrohnkiteQuarterLayout" = [ ];
+        "KrohnkiteRotate" = [ ];
+        "KrohnkiteRotatePart" = [ ];
+        "KrohnkiteSetMaster" = [ ];
+        "KrohnkiteShiftDown" = [ ];
+        "KrohnkiteShiftLeft" = [ ];
+        "KrohnkiteShiftRight" = [ ];
+        "KrohnkiteShiftUp" = [ ];
+        "KrohnkiteShrinkHeight" = [ ];
+        "KrohnkiteShrinkWidth" = [ ];
+        "KrohnkiteSpiralLayout" = [ ];
+        "KrohnkiteSpreadLayout" = [ ];
+        "KrohnkiteStackedLayout" = [ ];
+        "KrohnkiteStairLayout" = [ ];
+        "KrohnkiteTileLayout" = [ ];
+        "KrohnkiteToggleFloat" = [ ];
+        "KrohnkiteTreeColumnLayout" = [ ];
+        "KrohnkitegrowWidth" = [ ];
       };
       plasmashell = {
         "next activity" = [ ];
@@ -204,12 +238,80 @@ in
         "activate task manager entry 10" = [ ];
       };
     };
+    # Workaround: invoke Krohnkite shortcuts via qdbus due to issues with direct bindings.
+    hotkeys.commands = {
+      krohnkiteNextLayout = {
+        name = "Krohnkite: Next Layout";
+        key = "Ctrl+Alt+Space";
+        command = ''
+          gdbus call --session --dest org.kde.kglobalaccel --object-path /component/kwin --method org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteNextLayout"
+        '';
+      };
+      krohnkiteToggleFloating = {
+        name = "Krohnkite: Toggle Floating";
+        key = "Ctrl+Alt+T";
+        command = ''
+          gdbus call --session --dest org.kde.kglobalaccel --object-path /component/kwin --method org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteToggleFloat"
+        '';
+      };
+      krohnkiteIncrease = {
+        name = "Krohnkite: Increase";
+        key = "Ctrl+Alt+L";
+        command = ''
+          gdbus call --session --dest org.kde.kglobalaccel --object-path /component/kwin --method org.kde.kglobalaccel.Component.invokeShortcut "KrohnkitegrowWidth"
+        '';
+      };
+      krohnkiteDecrease = {
+        name = "Krohnkite: Decrease";
+        key = "Ctrl+Alt+H";
+        command = ''
+          gdbus call --session --dest org.kde.kglobalaccel --object-path /component/kwin --method org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteShrinkWidth"
+        '';
+      };
+      krohnkiteFocusNext = {
+        name = "Krohnkite: Focus Next";
+        key = "Ctrl+Alt+F";
+        command = ''
+          gdbus call --session --dest org.kde.kglobalaccel --object-path /component/kwin --method org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteFocusNext"
+        '';
+      };
+      krohnkiteFocusPrev = {
+        name = "Krohnkite: Focus Previous";
+        key = "Ctrl+Alt+B";
+        command = ''
+          gdbus call --session --dest org.kde.kglobalaccel --object-path /component/kwin --method org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteFocusPrev"
+        '';
+      };
+      krohnkiteSetMaster = {
+        name = "Krohnkite: Set as Master";
+        key = "Ctrl+Alt+Return";
+        command = ''
+          gdbus call --session --dest org.kde.kglobalaccel --object-path /component/kwin --method org.kde.kglobalaccel.Component.invokeShortcut "KrohnkiteSetMaster"
+        '';
+      };
+    };
     configFile = {
       "kwinrc" = {
         "Plugins" = {
           slideEnabled = false;
           wobblywindowsEnabled = true;
           desktopgrid-cornersEnabled = true;
+          krohnkiteEnabled = true;
+        };
+        "Script-krohnkite" = {
+          monocleLayoutOrder = 1;
+          columnsLayoutOrder = 2;
+          enableColumnsLayout = true;
+          tileLayoutOrder = 0;
+          threeColumnLayoutOrder = 0;
+          spiralLayoutOrder = 0;
+          quarterLayoutOrder = 0;
+          stackedLayoutOrder = 0;
+          spreadLayoutOrder = 0;
+          floatingLayoutOrder = 3;
+          stairLayoutOrder = 0;
+          binaryTreeLayoutOrder = 0;
+          cascadeLayoutOrder = 0;
         };
         "ModifierOnlyShortcuts" = {
           Meta = "org.kde.krunner.desktop,_launch,Meta";
