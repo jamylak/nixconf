@@ -101,7 +101,7 @@ in
     pkgs.qt6.qttools
     pkgs.wl-clipboard
     pkgs.rofi
-    pkgs.krohnkite
+    pkgs.kdePackages.krohnkite
     (pkgs.writeShellScriptBin "next-desktop" ''
       qdbus org.kde.KWin /KWin org.kde.KWin.nextDesktop
     '')
