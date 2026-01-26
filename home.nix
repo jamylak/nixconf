@@ -1,11 +1,23 @@
-{ config, pkgs, lib, nvimconf, dotfiles, ghostty, fzf-fish, chomper, osConfig ? null, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  nvimconf,
+  dotfiles,
+  ghostty,
+  fzf-fish,
+  chomper,
+  osConfig ? null,
+  ...
+}:
 let
   # Optional module arg; default to false if not provided.
   isVmware = config._module.args.isVmware or false;
   isNixos = osConfig != null && osConfig.system ? nixos;
   isVmwareHost = isVmware || (isNixos && (osConfig.networking.hostName or "") == "vmware");
   ghosttyPkg = ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
-in {
+in
+{
   home.username = lib.mkDefault "dev";
   home.homeDirectory = lib.mkDefault "/home/dev";
 
@@ -79,8 +91,8 @@ in {
     # pkgs.lemminx
     # pkgs.nodePackages.typescript-language-server
     # pkgs.nodePackages.typescript
-  ] ++ lib.optionals isNixos (
-    [
+  ]
+  ++ lib.optionals isNixos ([
     pkgs.alacritty
     pkgs.kitty
     ghosttyPkg
@@ -101,8 +113,8 @@ in {
     (pkgs.writeShellScriptBin "window-prev-desktop" ''
       qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut "Window to Previous Desktop"
     '')
-  ]
-  ) ++ lib.optionals (!isNixos) [
+  ])
+  ++ lib.optionals (!isNixos) [
   ];
 
   programs.fzf = {
@@ -153,7 +165,10 @@ in {
     # };
     shortcuts = {
       "org.kde.krunner.desktop" = {
-        "_launch" = [ "Alt+Space" "Meta+Space" ];
+        "_launch" = [
+          "Alt+Space"
+          "Meta+Space"
+        ];
       };
       "kwin" = {
         "Close Window" = "Meta+Q";
@@ -219,7 +234,10 @@ in {
       exec = "brave --new-window";
       icon = "brave-browser";
       terminal = false;
-      categories = [ "Network" "WebBrowser" ];
+      categories = [
+        "Network"
+        "WebBrowser"
+      ];
     };
     kde-desktop-grid = {
       name = "Desktop Grid";
@@ -274,19 +292,21 @@ in {
       modifier = "Mod4";
       menu = "rofi -show drun";
       terminal = "kitty";
-      keybindings = let
-        mod = "Mod4";
-      in {
-        "${mod}+q" = "kill";
-        "${mod}+space" = "exec rofi -show drun";
-        "${mod}+Return" = "exec kitty";
-        "Ctrl+Alt+space" = "layout toggle stacking splitv";
-        "Ctrl+Alt+n" = "workspace next";
-        "Ctrl+Alt+p" = "workspace prev";
-        "Ctrl+Alt+t" = "floating toggle";
-        "Ctrl+Alt+h" = "resize shrink width 50 px";
-        "Ctrl+Alt+l" = "resize grow width 50 px";
-      };
+      keybindings =
+        let
+          mod = "Mod4";
+        in
+        {
+          "${mod}+q" = "kill";
+          "${mod}+space" = "exec rofi -show drun";
+          "${mod}+Return" = "exec kitty";
+          "Ctrl+Alt+space" = "layout toggle stacking splitv";
+          "Ctrl+Alt+n" = "workspace next";
+          "Ctrl+Alt+p" = "workspace prev";
+          "Ctrl+Alt+t" = "floating toggle";
+          "Ctrl+Alt+h" = "resize shrink width 50 px";
+          "Ctrl+Alt+l" = "resize grow width 50 px";
+        };
     };
   };
 

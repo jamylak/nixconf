@@ -27,7 +27,19 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, plasma-manager, nvimconf, dotfiles, ghostty, fzf-fish, chomper, ... }:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      plasma-manager,
+      nvimconf,
+      dotfiles,
+      ghostty,
+      fzf-fish,
+      chomper,
+      ...
+    }:
     let
       mkPkgs = system: import nixpkgs { inherit system; };
       hmArgs = {
@@ -38,7 +50,8 @@
         inherit chomper;
         inherit plasma-manager;
       };
-      mkHome = { system, homeModule }:
+      mkHome =
+        { system, homeModule }:
         home-manager.lib.homeManagerConfiguration {
           pkgs = mkPkgs system;
           modules = [
@@ -48,7 +61,8 @@
           ];
           extraSpecialArgs = hmArgs;
         };
-    in {
+    in
+    {
       nixosConfigurations = {
         dell = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";

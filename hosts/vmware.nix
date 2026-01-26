@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./vmware-hardware.nix
   ];
@@ -18,7 +19,10 @@
   ];
 
   systemd.services.mnt-hgfs = {
-    after = [ "vmware.service" "graphical.target" ];
+    after = [
+      "vmware.service"
+      "graphical.target"
+    ];
     wants = [ "vmware.service" ];
     wantedBy = [ "graphical.target" ];
     serviceConfig = {
