@@ -134,6 +134,48 @@ in
     '';
   };
 
+  services.xremap = lib.mkIf isNixos {
+    enable = true;
+    config = {
+      keymap = [
+        {
+          name = "Brave (Emacs)";
+          application = {
+            only = [
+              "brave-browser"
+              "Brave-browser"
+              "Brave"
+            ];
+          };
+          remap = {
+            # Emacs basics
+            "C-b" = "left";
+            "C-f" = "right";
+            "C-p" = "up";
+            "C-n" = "down";
+            "C-a" = "home";
+            "C-e" = "end";
+            "C-k" = [
+              "Shift-end"
+              "backspace"
+            ];
+            "C-d" = "delete";
+
+            # Emacs word
+            "M-b" = "C-left";
+            "M-f" = "C-right";
+
+            # Browser/window controls kept on Super
+            "Super-w" = "C-w"; # close tab
+            "Super-q" = "C-Shift-w"; # close window
+            "Super-n" = "C-n"; # new window
+            "Super-t" = "C-t"; # new tab
+          };
+        }
+      ];
+    };
+  };
+
   programs.git = {
     enable = true;
     settings = lib.mkIf isVmwareHost {
