@@ -138,15 +138,14 @@ in
   # qdbus org.kde.KWin /KWin org.kde.KWin.queryWindowInfo
   services.xremap = lib.mkIf isNixos {
     enable = true;
+    withKDE = true; # needed for app-specific matches on KDE Wayland
+    watch = true; # handle hotplug / device changes
+    # Restrict to explicit device names to avoid grabbing the wrong device.
+    # Use the Name="..." field from /proc/bus/input/devices.
+    # deviceNames = [
+    #   "VMware Virtual USB Keyboard"
+    # ];
     config = {
-      device = {
-        # Pin to the real keyboard event device to avoid grabbing wrong input.
-        # ls -l /dev/input/by-id
-        # cat /proc/bus/input/devices
-        only = [
-          "/dev/input/by-id/usb-VMware_VMware_Virtual_USB_Keyboard-event-kbd"
-        ];
-      };
       keymap = [
         {
           name = "Brave (Emacs)";
