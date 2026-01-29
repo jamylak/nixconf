@@ -136,7 +136,7 @@ in
 
   # Find WM_CLASS of a window via:
   # qdbus org.kde.KWin /KWin org.kde.KWin.queryWindowInfo
-  services.xremap = lib.mkIf isNixos {
+  services.xremap = lib.mkIf isVmwareHost {
     enable = true;
     withKDE = true; # needed for app-specific matches on KDE Wayland
     watch = true; # handle hotplug / device changes

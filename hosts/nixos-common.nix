@@ -38,6 +38,11 @@
     enable = false; # temporarily disable to let xremap grab the keyboard
   };
 
+  services.udev.extraRules = ''
+    # Allow xremap to write to /dev/uinput without running as root.
+    KERNEL=="uinput", GROUP="uinput", MODE="0660", OPTIONS+="static_node=uinput"
+  '';
+
   users.users.james = {
     isNormalUser = true;
     extraGroups = [
