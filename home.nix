@@ -184,6 +184,9 @@ in
     };
   };
 
+  # Keep the xremap service installed but don't auto-start at login.
+  systemd.user.services.xremap.Install.WantedBy = lib.mkForce [ ];
+
   programs.git = {
     enable = true;
     settings = lib.mkIf isVmwareHost {
