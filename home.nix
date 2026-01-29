@@ -142,9 +142,7 @@ in
           name = "Brave (Emacs)";
           application = {
             only = [
-              "brave-browser"
-              "Brave-browser"
-              "Brave"
+              "brave"
             ];
           };
           remap = {
