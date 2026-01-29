@@ -139,6 +139,14 @@ in
   services.xremap = lib.mkIf isNixos {
     enable = true;
     config = {
+      device = {
+        # Pin to the real keyboard event device to avoid grabbing wrong input.
+        # ls -l /dev/input/by-id
+        # cat /proc/bus/input/devices
+        only = [
+          "/dev/input/by-id/usb-VMware_VMware_Virtual_USB_Keyboard-event-kbd"
+        ];
+      };
       keymap = [
         {
           name = "Brave (Emacs)";
