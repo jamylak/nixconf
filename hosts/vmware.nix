@@ -39,7 +39,7 @@
   services.xserver.videoDrivers = [ "modesetting" ];
 
   # Disable input methods to avoid IBus Wayland warnings.
-  i18n.inputMethod.enabled = "none";
+  i18n.inputMethod.enabled = null;
 
   users.users.james.initialPassword = "changeme";
 
