@@ -1,12 +1,39 @@
 # nixconf
-## Build
+
+## Setup
+
+Quick start (NixOS):
+
+```sh
+git clone <this repo>
+cd nixconf
+sudo nixos-rebuild switch --flake .#<host>
+```
+
+Home Manager (non-NixOS / standalone):
+
+```sh
+nix build --impure .#homeConfigurations.<name>.activationPackage
+./result/activate
+```
+
+Host-specific details (hardware configs, bootloader, etc.) live in `hosts/README.md`.
+
+
+
+## Docker Host (old)
+
+I was just quickly testing this inside of Docker as a quick validation before using a VM.
+It may no longer work in Docker though
+
+### Build
 Run (build validates Home Manager config):
 
 ```sh
 docker build -t nixos-test .
 ```
 
-## Hosts
+### Hosts
 
 See `hosts/README.md` for Dell and VMware setup.
 
