@@ -38,6 +38,9 @@
   services.desktopManager.plasma6.enable = true;
   services.xserver.videoDrivers = [ "modesetting" ];
 
+  # Disable input methods to avoid IBus Wayland warnings.
+  i18n.inputMethod.enabled = "none";
+
   users.users.james.initialPassword = "changeme";
 
   boot.loader.systemd-boot.enable = true;
