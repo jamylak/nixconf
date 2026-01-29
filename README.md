@@ -10,6 +10,12 @@ cd nixconf
 sudo nixos-rebuild switch --flake .#<host>
 ```
 
+Example (VMware):
+
+```sh
+sudo nixos-rebuild switch --flake ~/nixconf#vmware
+```
+
 Home Manager (non-NixOS / standalone):
 
 ```sh
