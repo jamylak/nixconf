@@ -58,13 +58,13 @@
     isNormalUser = true;
     extraGroups = [
       "wheel"
-      "input"
-      "uinput"
+      "input" # xremap reads physical devices from /dev/input/event*
+      "uinput" # xremap writes remapped keys via /dev/uinput
     ];
     shell = pkgs.fish;
   };
 
-  boot.kernelModules = [ "uinput" ];
+  boot.kernelModules = [ "uinput" ]; # ensure /dev/uinput exists for xremap
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
