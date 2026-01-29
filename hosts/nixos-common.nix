@@ -40,7 +40,7 @@
 
   services.udev.extraRules = ''
     # Allow xremap to write to /dev/uinput without running as root.
-    KERNEL=="uinput", GROUP="uinput", MODE="0660", OPTIONS+="static_node=uinput"
+    ACTION=="add|change", SUBSYSTEM=="misc", KERNEL=="uinput", GROUP="uinput", MODE="0660", OPTIONS+="static_node=uinput"
   '';
 
   users.users.james = {
@@ -52,6 +52,8 @@
     ];
     shell = pkgs.fish;
   };
+
+  users.groups.uinput = { };
 
   boot.kernelModules = [ "uinput" ]; # ensure /dev/uinput exists for xremap
 
