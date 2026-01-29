@@ -148,10 +148,13 @@ in
     config = {
       keymap = [
         {
-          name = "Brave (Emacs)";
+          name = "Emacs bindings";
           application = {
             only = [
               "brave-browser"
+              "krunner"
+              "KRunner"
+              "org.kde.krunner"
             ];
           };
           remap = {
@@ -171,10 +174,15 @@ in
             # Emacs word
             "M-b" = "C-left";
             "M-f" = "C-right";
+            "M-d" = "C-delete";
+            "C-w" = [
+              "C-Shift-left"
+              "delete"
+            ];
 
             # Browser/window controls kept on Super
             "Super-w" = "C-w"; # close tab
-            "Super-q" = "C-Shift-w"; # close window
+            # "Super-q" = "C-Shift-w"; # close window
             "Super-n" = "C-n"; # new window
             "Super-t" = "C-t"; # new tab
           };
