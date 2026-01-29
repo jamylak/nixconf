@@ -35,23 +35,7 @@
   };
 
   services.kanata = {
-    enable = true;
-    keyboards.default = {
-      extraDefCfg = "process-unmapped-keys yes";
-      config = ''
-        (defsrc
-          lmet rmet
-        )
-
-        (defalias
-          smspc (tap-hold 200 200 (multi lmet spc) lmet)
-        )
-
-        (deflayer base
-          @smspc @smspc
-        )
-      '';
-    };
+    enable = false; # temporarily disable to let xremap grab the keyboard
   };
 
   users.users.james = {
