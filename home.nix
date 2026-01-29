@@ -151,7 +151,6 @@ in
           name = "Brave (Emacs)";
           application = {
             only = [
-              "brave"
               "brave-browser"
             ];
           };
