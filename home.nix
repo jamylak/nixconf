@@ -134,6 +134,8 @@ in
     '';
   };
 
+  # Find WM_CLASS of a window via:
+  # qdbus org.kde.KWin /KWin org.kde.KWin.queryWindowInfo
   services.xremap = lib.mkIf isNixos {
     enable = true;
     config = {
