@@ -169,6 +169,10 @@ in
               "Shift-end"
               "backspace"
             ];
+            "C-u" = [
+              "Shift-home"
+              "backspace"
+            ];
             "C-d" = "delete";
 
             # Emacs word
