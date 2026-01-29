@@ -142,9 +142,9 @@ in
     watch = true; # handle hotplug / device changes
     # Restrict to explicit device names to avoid grabbing the wrong device.
     # Use the Name="..." field from /proc/bus/input/devices.
-    # deviceNames = [
-    #   "VMware Virtual USB Keyboard"
-    # ];
+    deviceNames = [
+      "VMware Virtual USB Keyboard"
+    ];
     config = {
       keymap = [
         {
