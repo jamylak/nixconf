@@ -16,6 +16,13 @@ systemctl --user stop <unit>
 journalctl --user -u <unit> -b --no-pager
 ```
 
+## Disk usage (NixOS)
+
+```sh
+nix shell nixpkgs#coreutils -c df -h /
+nix shell nixpkgs#coreutils -c du -sh ~
+```
+
 ## Dell (NixOS)
 
 You must add Dell-specific hardware and boot settings before it will boot.
