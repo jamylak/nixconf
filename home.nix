@@ -152,6 +152,7 @@ in
           application = {
             only = [
               "brave"
+              "brave-browser"
             ];
           };
           remap = {
