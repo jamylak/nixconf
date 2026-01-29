@@ -26,10 +26,6 @@ in
   # User session timezone for KDE and other apps.
   home.sessionVariables = {
     TZ = "Australia/Sydney";
-    # Clear IM module vars to avoid IBus warnings.
-    QT_IM_MODULE = "";
-    GTK_IM_MODULE = "";
-    XMODIFIERS = "";
   };
 
   programs.home-manager.enable = true;
