@@ -5,6 +5,7 @@
   fzf-fish,
   chomper,
   plasma-manager,
+  xremap,
   pkgs,
   ...
 }:
@@ -34,35 +35,33 @@
   };
 
   services.kanata = {
-    enable = true;
-    keyboards.default = {
-      extraDefCfg = "process-unmapped-keys yes";
-      config = ''
-        (defsrc
-          lmet rmet
-        )
-
-        (defalias
-          smspc (tap-hold 200 200 (multi lmet spc) lmet)
-        )
-
-        (deflayer base
-          @smspc @smspc
-        )
-      '';
-    };
+    enable = false; # temporarily disable to let xremap grab the keyboard
   };
+
+  services.udev.extraRules = ''
+    # Allow xremap to write to /dev/uinput without running as root.
+    ACTION=="add|change", SUBSYSTEM=="misc", KERNEL=="uinput", GROUP="uinput", MODE="0660", OPTIONS+="static_node=uinput"
+  '';
 
   users.users.james = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [
+      "wheel"
+      "input" # xremap reads physical devices from /dev/input/event*
+      "uinput" # xremap writes remapped keys via /dev/uinput
+    ];
     shell = pkgs.fish;
   };
+
+  users.groups.uinput = { };
+
+  boot.kernelModules = [ "uinput" ]; # ensure /dev/uinput exists for xremap
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.sharedModules = [
     plasma-manager.homeModules.plasma-manager
+    xremap.homeManagerModules.default
   ];
   home-manager.extraSpecialArgs = {
     inherit nvimconf;

@@ -25,6 +25,9 @@
     chomper = {
       url = "github:jamylak/chomper";
     };
+    xremap = {
+      url = "github:xremap/nix-flake";
+    };
   };
 
   outputs =
@@ -38,6 +41,7 @@
       ghostty,
       fzf-fish,
       chomper,
+      xremap,
       ...
     }:
     let
@@ -49,6 +53,7 @@
         inherit fzf-fish;
         inherit chomper;
         inherit plasma-manager;
+        inherit xremap;
       };
       mkHome =
         { system, homeModule }:
@@ -56,6 +61,7 @@
           pkgs = mkPkgs system;
           modules = [
             plasma-manager.homeModules.plasma-manager
+            xremap.homeManagerModules.default
             ./home.nix
             homeModule
           ];

@@ -130,6 +130,70 @@ in
     '';
   };
 
+  # Find WM_CLASS of a window via:
+  # qdbus org.kde.KWin /KWin org.kde.KWin.queryWindowInfo
+  services.xremap = lib.mkIf isVmwareHost {
+    enable = true;
+    withKDE = true; # needed for app-specific matches on KDE Wayland
+    watch = true; # handle hotplug / device changes
+    # Restrict to explicit device names to avoid grabbing the wrong device.
+    # Use the Name="..." field from /proc/bus/input/devices.
+    deviceNames = [
+      "VMware Virtual USB Keyboard"
+    ];
+    config = {
+      keymap = [
+        {
+          name = "Emacs bindings";
+          application = {
+            only = [
+              "brave-browser"
+              "krunner"
+              "KRunner"
+              "org.kde.krunner"
+            ];
+          };
+          remap = {
+            # Emacs basics
+            "C-b" = "left";
+            "C-f" = "right";
+            "C-p" = "up";
+            "C-n" = "down";
+            "C-a" = "home";
+            "C-e" = "end";
+            "C-k" = [
+              "Shift-end"
+              "backspace"
+            ];
+            "C-u" = [
+              "Shift-home"
+              "backspace"
+            ];
+            "C-d" = "delete";
+
+            # Emacs word
+            "M-b" = "C-left";
+            "M-f" = "C-right";
+            "M-d" = "C-delete";
+            "C-w" = [
+              "C-Shift-left"
+              "delete"
+            ];
+
+            # Browser/window controls kept on Super
+            "Super-w" = "C-w"; # close tab
+            # "Super-q" = "C-Shift-w"; # close window
+            "Super-n" = "C-n"; # new window
+            "Super-t" = "C-t"; # new tab
+          };
+        }
+      ];
+    };
+  };
+
+  # Keep the xremap service installed but don't auto-start at login.
+  systemd.user.services.xremap.Install.WantedBy = lib.mkForce [ ];
+
   programs.git = {
     enable = true;
     settings = lib.mkIf isVmwareHost {
