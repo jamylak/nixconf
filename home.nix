@@ -201,6 +201,13 @@ in
     };
   };
 
+  systemd.user.services.xremap = lib.mkIf isNixos {
+    Unit = {
+      After = [ "graphical-session.target" ];
+      Wants = [ "graphical-session.target" ];
+    };
+  };
+
   xdg.configFile."nvim".source = nvimconf;
   xdg.configFile."dotfiles".source = dotfiles;
 
