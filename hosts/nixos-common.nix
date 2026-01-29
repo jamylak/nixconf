@@ -56,9 +56,15 @@
 
   users.users.james = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [
+      "wheel"
+      "input"
+      "uinput"
+    ];
     shell = pkgs.fish;
   };
+
+  boot.kernelModules = [ "uinput" ];
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
