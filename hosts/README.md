@@ -1,5 +1,21 @@
 # Hosts Guide
 
+## Debugging user services (systemd)
+
+Common `systemctl --user` and journal commands:
+
+```sh
+# Status (replace <unit> with your service/timer)
+systemctl --user status <unit>
+
+# Start / stop
+systemctl --user start <unit>
+systemctl --user stop <unit>
+
+# Logs
+journalctl --user -u <unit> -b --no-pager
+```
+
 ## Dell (NixOS)
 
 You must add Dell-specific hardware and boot settings before it will boot.
