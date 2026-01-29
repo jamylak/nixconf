@@ -5,6 +5,7 @@
   fzf-fish,
   chomper,
   plasma-manager,
+  xremap,
   pkgs,
   ...
 }:
@@ -63,6 +64,7 @@
   home-manager.useGlobalPkgs = true;
   home-manager.sharedModules = [
     plasma-manager.homeModules.plasma-manager
+    xremap.homeManagerModules.default
   ];
   home-manager.extraSpecialArgs = {
     inherit nvimconf;
