@@ -276,6 +276,8 @@ in
         "Switch to Previous Desktop" = "Ctrl+Alt+P";
         "Window to Next Desktop" = "Meta+Ctrl+N";
         "Window to Previous Desktop" = "Meta+Ctrl+P";
+        "view_zoom_in" = "Meta+Shift+=";
+        "view_zoom_out" = "Meta+Shift+-";
         "Edit Tiles" = [ ];
         "Walk Through Windows" = [ ];
         "Walk Through Windows (Reverse)" = [ ];
