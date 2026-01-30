@@ -323,6 +323,8 @@ in
       plasmashell = {
         "next activity" = [ ];
         "show-on-mouse-pos" = [ ];
+        "Slideshow Wallpaper Next Image" = [ ];
+        "activate application launcher" = [ ];
         "activate task manager entry 1" = [ ];
         "activate task manager entry 2" = [ ];
         "activate task manager entry 3" = [ ];
