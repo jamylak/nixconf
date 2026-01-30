@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ lib, pkgs, ... }: {
   imports = [
     ./dell-hardware.nix
   ];
@@ -14,4 +14,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   hardware.graphics.enable = true;
+
+  networking.networkmanager.enable = true;
+  users.users.james.extraGroups = lib.mkAfter [ "networkmanager" ];
 }
