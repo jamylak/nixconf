@@ -79,12 +79,21 @@
           ];
           specialArgs = hmArgs;
         };
-        vmware = nixpkgs.lib.nixosSystem {
+        vmware-m3 = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           modules = [
             home-manager.nixosModules.home-manager
             ./hosts/nixos-common.nix
-            ./hosts/vmware.nix
+            ./hosts/vmware-m3.nix
+          ];
+          specialArgs = hmArgs;
+        };
+        vmware-m1 = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            home-manager.nixosModules.home-manager
+            ./hosts/nixos-common.nix
+            ./hosts/vmware-m1.nix
           ];
           specialArgs = hmArgs;
         };
