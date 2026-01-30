@@ -180,6 +180,15 @@ in
             # "Super-q" = "C-Shift-w"; # close window
             "Super-n" = "C-n"; # new window
             "Super-t" = "C-t"; # new tab
+            "Super-1" = "C-1";
+            "Super-2" = "C-2";
+            "Super-3" = "C-3";
+            "Super-4" = "C-4";
+            "Super-5" = "C-5";
+            "Super-6" = "C-6";
+            "Super-7" = "C-7";
+            "Super-8" = "C-8";
+            "Super-9" = "C-9";
           };
         }
       ];
