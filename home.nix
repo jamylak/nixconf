@@ -53,6 +53,7 @@ in
     pkgs.ripgrep
     pkgs.fd
     pkgs.git
+    pkgs.codex
     pkgs.gh
     pkgs.openssh
     pkgs.curl
