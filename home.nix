@@ -272,7 +272,7 @@ in
         "Switch Window Down" = [ ];
         "Switch Window Left" = [ ];
         "Switch Window Right" = [ ];
-        "Lock Screen" = [ ];
+        "Lock Session" = [ ];
         # "Window Fullscreen" = "Alt+Return";
         "Window Maximize" = "Alt+Return";
         "Switch to Next Desktop" = [ "Ctrl+Alt+N" ];
@@ -282,8 +282,8 @@ in
         "view_zoom_in" = "Meta+Shift+=";
         "view_zoom_out" = "Meta+Shift+-";
         "Edit Tiles" = [ ];
-        "Walk Through Windows" = [ ];
-        "Walk Through Windows (Reverse)" = [ ];
+        "Walk Through Windows" = if isVmwareM3 then [ ] else [ "Ctrl+Alt+F" ];
+        "Walk Through Windows (Reverse)" = if isVmwareM3 then [ ] else [ "Ctrl+Alt+B" ];
         "KrohnkiteBTreeLayout" = [ ];
         "KrohnkiteDecrease" = [ ];
         "KrohnkiteFloatAll" = [ ];
