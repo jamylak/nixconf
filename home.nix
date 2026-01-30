@@ -450,6 +450,11 @@ in
         "WebBrowser"
       ];
     };
+    kate = {
+      name = "Kate";
+      exec = "kate";
+      noDisplay = true;
+    };
     kde-desktop-grid = {
       name = "Desktop Grid";
       genericName = "KWin Effect";
