@@ -274,6 +274,7 @@ in
         "Switch Window Right" = [ ];
         "Lock Session" = [ ];
         "Window Move" = "Alt";
+        "Window Resize" = "Meta";
         "Window Fullscreen" = [ ];
         "Window Maximize" = "Ctrl+Alt+Space";
         "Switch to Next Desktop" = [ "Ctrl+Alt+N" ];
