@@ -15,6 +15,8 @@ let
   isVmware = config._module.args.isVmware or false;
   isNixos = osConfig != null && osConfig.system ? nixos;
   isVmwareHost = isVmware || (isNixos && (osConfig.networking.hostName or "") == "vmware");
+  isDell = isNixos && (osConfig.networking.hostName or "") == "dell";
+  isVmwareM3 = isNixos && (osConfig.networking.hostName or "") == "vmware-m3";
   ghosttyPkg = ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
@@ -138,11 +140,13 @@ in
       withKDE = true; # needed for app-specific matches on KDE Wayland
       watch = true; # handle hotplug / device changes
       config = {
-        modmap = lib.optionals (!isVmwareHost) [
+        modmap = lib.optionals isDell [
           {
-            name = "Global";
+            name = "Dell remap";
             remap = {
               "CapsLock" = "Ctrl_L";
+              "Alt_R" = "Super_L";
+              "Fn" = "Alt_L";
             };
           }
         ];
@@ -272,6 +276,8 @@ in
         "Switch to Previous Desktop" = "Ctrl+Alt+P";
         "Window to Next Desktop" = "Meta+Ctrl+N";
         "Window to Previous Desktop" = "Meta+Ctrl+P";
+        "view_zoom_in" = "Meta+Shift+=";
+        "view_zoom_out" = "Meta+Shift+-";
         "Edit Tiles" = [ ];
         "Walk Through Windows" = [ ];
         "Walk Through Windows (Reverse)" = [ ];
@@ -382,7 +388,7 @@ in
           slideEnabled = false;
           wobblywindowsEnabled = true;
           desktopgrid-cornersEnabled = true;
-          krohnkiteEnabled = true;
+          krohnkiteEnabled = isVmwareM3;
         };
         "Script-krohnkite" = {
           monocleLayoutOrder = 1;
