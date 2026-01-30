@@ -280,8 +280,8 @@ in
         "Switch to Previous Desktop" = "Ctrl+Alt+P";
         "Window to Next Desktop" = "Meta+Ctrl+N";
         "Window to Previous Desktop" = "Meta+Ctrl+P";
-        "view_zoom_in" = "Meta+Shift+=";
-        "view_zoom_out" = "Meta+Shift+-";
+        "view_zoom_in" = "Meta++";
+        "view_zoom_out" = "Meta+_";
         "Edit Tiles" = [ ];
         "Walk Through Windows" = if isVmwareM3 then [ ] else [ "Ctrl+Alt+F" ];
         "Walk Through Windows (Reverse)" = if isVmwareM3 then [ ] else [ "Ctrl+Alt+B" ];
