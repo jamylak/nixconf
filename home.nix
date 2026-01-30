@@ -464,30 +464,6 @@ in
     };
   };
 
-  wayland.windowManager.sway = {
-    enable = true;
-    config = {
-      modifier = "Mod4";
-      menu = "rofi -show drun";
-      terminal = "kitty";
-      keybindings =
-        let
-          mod = "Mod4";
-        in
-        {
-          "${mod}+q" = "kill";
-          "${mod}+space" = "exec rofi -show drun";
-          "${mod}+Return" = "exec kitty";
-          "Ctrl+Alt+space" = "layout toggle stacking splitv";
-          "Ctrl+Alt+n" = "workspace next";
-          "Ctrl+Alt+p" = "workspace prev";
-          "Ctrl+Alt+t" = "floating toggle";
-          "Ctrl+Alt+h" = "resize shrink width 50 px";
-          "Ctrl+Alt+l" = "resize grow width 50 px";
-        };
-    };
-  };
-
   home.file."Downloads/.keep".text = "";
 
   home.activation.createProjDir = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
