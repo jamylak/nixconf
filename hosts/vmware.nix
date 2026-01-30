@@ -1,12 +1,6 @@
 { pkgs, ... }:
 {
-  imports = [
-    ./vmware-hardware.nix
-  ];
-
   home-manager.extraSpecialArgs.isVmware = true;
-
-  networking.hostName = "vmware";
 
   virtualisation.vmware.guest.enable = true;
   programs.fuse.userAllowOther = true;
@@ -33,8 +27,7 @@
   };
 
   services.xserver.enable = true;
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
+  services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
   services.xserver.videoDrivers = [ "modesetting" ];
 
