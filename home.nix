@@ -273,6 +273,7 @@ in
         "Switch Window Left" = [ ];
         "Switch Window Right" = [ ];
         "Lock Screen" = [ ];
+        "Window Fullscreen" = "Alt+Return";
         "Switch to Next Desktop" = [ "Ctrl+Alt+N" ];
         "Switch to Previous Desktop" = "Ctrl+Alt+P";
         "Window to Next Desktop" = "Meta+Ctrl+N";
