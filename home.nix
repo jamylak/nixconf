@@ -179,8 +179,8 @@ in
               # Browser/window controls kept on Super
               "Super-w" = "C-w"; # close tab
               # "Super-q" = "C-Shift-w"; # close window
-              "Super-n" = "M-n"; # new window
-              "Super-t" = "M-t"; # new tab
+              "Super-n" = "C-n"; # new window
+              "Super-t" = "C-t"; # new tab
               "Super-1" = "M-1";
               "Super-2" = "M-2";
               "Super-3" = "M-3";
