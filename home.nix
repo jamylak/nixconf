@@ -15,6 +15,8 @@ let
   isVmware = config._module.args.isVmware or false;
   isNixos = osConfig != null && osConfig.system ? nixos;
   isVmwareHost = isVmware || (isNixos && (osConfig.networking.hostName or "") == "vmware");
+  isDell = isNixos && (osConfig.networking.hostName or "") == "dell";
+  isVmwareM3 = isNixos && (osConfig.networking.hostName or "") == "vmware-m3";
   ghosttyPkg = ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
