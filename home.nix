@@ -132,74 +132,77 @@ in
 
   # Find WM_CLASS of a window via:
   # qdbus org.kde.KWin /KWin org.kde.KWin.queryWindowInfo
-  services.xremap = lib.mkIf isNixos ({
-    enable = true;
-    withKDE = true; # needed for app-specific matches on KDE Wayland
-    watch = true; # handle hotplug / device changes
-    config = {
-      keymap = [
-        {
-          name = "Emacs bindings";
-          application = {
-            only = [
-              "brave-browser"
-              "krunner"
-              "KRunner"
-              "org.kde.krunner"
-            ];
-          };
-          remap = {
-            # Emacs basics
-            "C-b" = "left";
-            "C-f" = "right";
-            "C-p" = "up";
-            "C-n" = "down";
-            "C-a" = "home";
-            "C-e" = "end";
-            "C-k" = [
-              "Shift-end"
-              "backspace"
-            ];
-            "C-u" = [
-              "Shift-home"
-              "backspace"
-            ];
-            "C-d" = "delete";
+  services.xremap = lib.mkIf isNixos (
+    {
+      enable = true;
+      withKDE = true; # needed for app-specific matches on KDE Wayland
+      watch = true; # handle hotplug / device changes
+      config = {
+        keymap = [
+          {
+            name = "Emacs bindings";
+            application = {
+              only = [
+                "brave-browser"
+                "krunner"
+                "KRunner"
+                "org.kde.krunner"
+              ];
+            };
+            remap = {
+              # Emacs basics
+              "C-b" = "left";
+              "C-f" = "right";
+              "C-p" = "up";
+              "C-n" = "down";
+              "C-a" = "home";
+              "C-e" = "end";
+              "C-k" = [
+                "Shift-end"
+                "backspace"
+              ];
+              "C-u" = [
+                "Shift-home"
+                "backspace"
+              ];
+              "C-d" = "delete";
 
-            # Emacs word
-            "M-b" = "C-left";
-            "M-f" = "C-right";
-            "M-d" = "C-delete";
-            "C-w" = [
-              "C-Shift-left"
-              "delete"
-            ];
+              # Emacs word
+              "M-b" = "C-left";
+              "M-f" = "C-right";
+              "M-d" = "C-delete";
+              "C-w" = [
+                "C-Shift-left"
+                "delete"
+              ];
 
-            # Browser/window controls kept on Super
-            "Super-w" = "C-w"; # close tab
-            # "Super-q" = "C-Shift-w"; # close window
-            "Super-n" = "C-n"; # new window
-            "Super-t" = "C-t"; # new tab
-            "Super-1" = "C-1";
-            "Super-2" = "C-2";
-            "Super-3" = "C-3";
-            "Super-4" = "C-4";
-            "Super-5" = "C-5";
-            "Super-6" = "C-6";
-            "Super-7" = "C-7";
-            "Super-8" = "C-8";
-            "Super-9" = "C-9";
-          };
-        }
+              # Browser/window controls kept on Super
+              "Super-w" = "C-w"; # close tab
+              # "Super-q" = "C-Shift-w"; # close window
+              "Super-n" = "M-n"; # new window
+              "Super-t" = "M-t"; # new tab
+              "Super-1" = "M-1";
+              "Super-2" = "M-2";
+              "Super-3" = "M-3";
+              "Super-4" = "M-4";
+              "Super-5" = "M-5";
+              "Super-6" = "M-6";
+              "Super-7" = "M-7";
+              "Super-8" = "M-8";
+              "Super-9" = "M-9";
+            };
+          }
+        ];
+      };
+    }
+    // lib.optionalAttrs isVmwareHost {
+      # Restrict to explicit device names to avoid grabbing the wrong device.
+      # Use the Name="..." field from /proc/bus/input/devices.
+      deviceNames = [
+        "VMware Virtual USB Keyboard"
       ];
-    };
-  } // lib.optionalAttrs isVmwareHost {
-    # Restrict to explicit device names to avoid grabbing the wrong device.
-    # Use the Name="..." field from /proc/bus/input/devices.
-    deviceNames = [
-      "VMware Virtual USB Keyboard"
-    ];
-  });
+    }
+  );
 
   programs.git = {
     enable = true;
