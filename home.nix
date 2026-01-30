@@ -272,6 +272,7 @@ in
         "Switch Window Down" = [ ];
         "Switch Window Left" = [ ];
         "Switch Window Right" = [ ];
+        "Lock Screen" = [ ];
         "Switch to Next Desktop" = [ "Ctrl+Alt+N" ];
         "Switch to Previous Desktop" = "Ctrl+Alt+P";
         "Window to Next Desktop" = "Meta+Ctrl+N";
