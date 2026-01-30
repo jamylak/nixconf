@@ -139,6 +139,13 @@ in
       watch = true; # handle hotplug / device changes
       config = {
         keymap = [
+          lib.mkIf (!isVmwareHost) {
+            name = "Remap CapsLock to Ctrl";
+            remap = {
+              "CapsLock" = "left_ctrl";
+            };
+          }
+
           {
             name = "Emacs bindings";
             application = {
