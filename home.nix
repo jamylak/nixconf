@@ -334,7 +334,7 @@ in
       };
     };
     # Workaround: invoke Krohnkite shortcuts via qdbus due to issues with direct bindings.
-    hotkeys.commands = {
+    hotkeys.commands = lib.mkIf (!isVmwareM3) {
       krohnkiteNextLayout = {
         name = "Krohnkite: Next Layout";
         key = "Ctrl+Alt+Space";
