@@ -386,7 +386,7 @@ in
           slideEnabled = false;
           wobblywindowsEnabled = true;
           desktopgrid-cornersEnabled = true;
-          krohnkiteEnabled = true;
+          krohnkiteEnabled = isVmwareM3;
         };
         "Script-krohnkite" = {
           monocleLayoutOrder = 1;
