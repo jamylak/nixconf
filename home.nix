@@ -140,11 +140,13 @@ in
       withKDE = true; # needed for app-specific matches on KDE Wayland
       watch = true; # handle hotplug / device changes
       config = {
-        modmap = lib.optionals (!isVmwareHost) [
+        modmap = lib.optionals isDell [
           {
-            name = "Global";
+            name = "Dell remap";
             remap = {
               "CapsLock" = "Ctrl_L";
+              "Alt_R" = "Super_L";
+              "Fn" = "Alt_L";
             };
           }
         ];
