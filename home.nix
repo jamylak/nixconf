@@ -138,8 +138,8 @@ in
       withKDE = true; # needed for app-specific matches on KDE Wayland
       watch = true; # handle hotplug / device changes
       config = {
-        modmap = [
-          lib.mkIf (!isVmwareHost) {
+        modmap = lib.optionals (!isVmwareHost) [
+          {
             name = "Global";
             remap = {
               "CapsLock" = "Ctrl_L";
