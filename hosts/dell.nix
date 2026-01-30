@@ -1,4 +1,8 @@
 { pkgs, ... }: {
+  imports = [
+    ./dell-hardware.nix
+  ];
+
   networking.hostName = "dell";
 
   services.xserver.enable = true;
@@ -7,8 +11,6 @@
   services.xserver.videoDrivers = [ "amdgpu" ];
 
   hardware.opengl.enable = true;
-  hardware.opengl.driSupport = true;
-  hardware.opengl.driSupport32Bit = true;
   hardware.opengl.extraPackages = [
     pkgs.amdvlk
   ];
