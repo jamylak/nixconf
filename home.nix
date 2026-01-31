@@ -221,6 +221,8 @@ in
 
   programs.git = {
     enable = true;
+    userName = "James Karefylakis";
+    userEmail = "jamylak@gmail.com";
     settings = lib.mkIf isVmwareHost {
       safe = {
         directory = "*";
