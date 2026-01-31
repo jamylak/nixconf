@@ -32,6 +32,12 @@
     askPassword = "${pkgs.kdePackages.ksshaskpass}/bin/ksshaskpass";
   };
 
+  # Unlock KWallet at login
+  security.pam.services = {
+    sddm.kwallet.enable = true;
+    login.kwallet.enable = true;
+  };
+
   services.kanata = {
     enable = false; # temporarily disable to let xremap grab the keyboard
   };

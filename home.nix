@@ -17,6 +17,8 @@ let
   isVmwareHost = isVmware || (isNixos && (osConfig.networking.hostName or "") == "vmware");
   isDell = isNixos && (osConfig.networking.hostName or "") == "dell";
   isVmwareM3 = isNixos && (osConfig.networking.hostName or "") == "vmware-m3";
+  # krohnkiteEnabled = isVmwareM3;
+  krohnkiteEnabled = false;
   ghosttyPkg = ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
@@ -53,6 +55,7 @@ in
     pkgs.ripgrep
     pkgs.fd
     pkgs.git
+    pkgs.codex
     pkgs.gh
     pkgs.openssh
     pkgs.curl
@@ -218,11 +221,19 @@ in
 
   programs.git = {
     enable = true;
-    settings = lib.mkIf isVmwareHost {
-      safe = {
-        directory = "*";
-      };
-    };
+    settings = lib.mkMerge [
+      {
+        user = {
+          name = "James Karefylakis";
+          email = "jamylak@gmail.com";
+        };
+      }
+      (lib.mkIf isVmwareHost {
+        safe = {
+          directory = "*";
+        };
+      })
+    ];
   };
 
   systemd.user.services.xremap = lib.mkIf isNixos {
@@ -272,15 +283,20 @@ in
         "Switch Window Down" = [ ];
         "Switch Window Left" = [ ];
         "Switch Window Right" = [ ];
+        "Lock Session" = [ ];
+        "Window Move" = "Alt";
+        "Window Resize" = "Meta";
+        "Window Fullscreen" = [ ];
+        "Window Maximize" = "Ctrl+Alt+Space";
         "Switch to Next Desktop" = [ "Ctrl+Alt+N" ];
         "Switch to Previous Desktop" = "Ctrl+Alt+P";
         "Window to Next Desktop" = "Meta+Ctrl+N";
         "Window to Previous Desktop" = "Meta+Ctrl+P";
-        "view_zoom_in" = "Meta+Shift+=";
-        "view_zoom_out" = "Meta+Shift+-";
+        "view_zoom_in" = "Meta++";
+        "view_zoom_out" = "Meta+_";
         "Edit Tiles" = [ ];
-        "Walk Through Windows" = [ ];
-        "Walk Through Windows (Reverse)" = [ ];
+        "Walk Through Windows" = if krohnkiteEnabled then [ ] else [ "Ctrl+Alt+F" ];
+        "Walk Through Windows (Reverse)" = if krohnkiteEnabled then [ ] else [ "Ctrl+Alt+B" ];
         "KrohnkiteBTreeLayout" = [ ];
         "KrohnkiteDecrease" = [ ];
         "KrohnkiteFloatAll" = [ ];
@@ -318,6 +334,8 @@ in
       plasmashell = {
         "next activity" = [ ];
         "show-on-mouse-pos" = [ ];
+        "Slideshow Wallpaper Next Image" = [ ];
+        "activate application launcher" = [ ];
         "activate task manager entry 1" = [ ];
         "activate task manager entry 2" = [ ];
         "activate task manager entry 3" = [ ];
@@ -331,7 +349,7 @@ in
       };
     };
     # Workaround: invoke Krohnkite shortcuts via qdbus due to issues with direct bindings.
-    hotkeys.commands = {
+    hotkeys.commands = lib.mkIf (!krohnkiteEnabled) {
       krohnkiteNextLayout = {
         name = "Krohnkite: Next Layout";
         key = "Ctrl+Alt+Space";
@@ -388,7 +406,7 @@ in
           slideEnabled = false;
           wobblywindowsEnabled = true;
           desktopgrid-cornersEnabled = true;
-          krohnkiteEnabled = isVmwareM3;
+          krohnkiteEnabled = krohnkiteEnabled;
         };
         "Script-krohnkite" = {
           monocleLayoutOrder = 1;
@@ -442,6 +460,11 @@ in
         "Network"
         "WebBrowser"
       ];
+    };
+    kate = {
+      name = "Kate";
+      exec = "kate";
+      noDisplay = true;
     };
     kde-desktop-grid = {
       name = "Desktop Grid";
