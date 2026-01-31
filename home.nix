@@ -221,13 +221,19 @@ in
 
   programs.git = {
     enable = true;
-    userName = "James Karefylakis";
-    userEmail = "jamylak@gmail.com";
-    settings = lib.mkIf isVmwareHost {
-      safe = {
-        directory = "*";
-      };
-    };
+    settings = lib.mkMerge [
+      {
+        user = {
+          name = "James Karefylakis";
+          email = "jamylak@gmail.com";
+        };
+      }
+      (lib.mkIf isVmwareHost {
+        safe = {
+          directory = "*";
+        };
+      })
+    ];
   };
 
   systemd.user.services.xremap = lib.mkIf isNixos {
