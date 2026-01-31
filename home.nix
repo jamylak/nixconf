@@ -17,7 +17,8 @@ let
   isVmwareHost = isVmware || (isNixos && (osConfig.networking.hostName or "") == "vmware");
   isDell = isNixos && (osConfig.networking.hostName or "") == "dell";
   isVmwareM3 = isNixos && (osConfig.networking.hostName or "") == "vmware-m3";
-  krohnkiteEnabled = isVmwareM3;
+  # krohnkiteEnabled = isVmwareM3;
+  krohnkiteEnabled = false;
   ghosttyPkg = ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
