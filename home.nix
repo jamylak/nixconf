@@ -17,6 +17,7 @@ let
   isVmwareHost = isVmware || (isNixos && (osConfig.networking.hostName or "") == "vmware");
   isDell = isNixos && (osConfig.networking.hostName or "") == "dell";
   isVmwareM3 = isNixos && (osConfig.networking.hostName or "") == "vmware-m3";
+  krohnkiteEnabled = isVmwareM3;
   ghosttyPkg = ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
@@ -285,8 +286,8 @@ in
         "view_zoom_in" = "Meta++";
         "view_zoom_out" = "Meta+_";
         "Edit Tiles" = [ ];
-        "Walk Through Windows" = if isVmwareM3 then [ ] else [ "Ctrl+Alt+F" ];
-        "Walk Through Windows (Reverse)" = if isVmwareM3 then [ ] else [ "Ctrl+Alt+B" ];
+        "Walk Through Windows" = if krohnkiteEnabled then [ ] else [ "Ctrl+Alt+F" ];
+        "Walk Through Windows (Reverse)" = if krohnkiteEnabled then [ ] else [ "Ctrl+Alt+B" ];
         "KrohnkiteBTreeLayout" = [ ];
         "KrohnkiteDecrease" = [ ];
         "KrohnkiteFloatAll" = [ ];
@@ -339,7 +340,7 @@ in
       };
     };
     # Workaround: invoke Krohnkite shortcuts via qdbus due to issues with direct bindings.
-    hotkeys.commands = lib.mkIf (!isVmwareM3) {
+    hotkeys.commands = lib.mkIf (!krohnkiteEnabled) {
       krohnkiteNextLayout = {
         name = "Krohnkite: Next Layout";
         key = "Ctrl+Alt+Space";
@@ -396,7 +397,7 @@ in
           slideEnabled = false;
           wobblywindowsEnabled = true;
           desktopgrid-cornersEnabled = true;
-          krohnkiteEnabled = isVmwareM3;
+          krohnkiteEnabled = krohnkiteEnabled;
         };
         "Script-krohnkite" = {
           monocleLayoutOrder = 1;
