@@ -221,6 +221,8 @@ in
 
   programs.git = {
     enable = true;
+    # Adopt the 25.05+ Home Manager default and avoid forcing a signing backend.
+    signing.format = null;
     settings = lib.mkMerge [
       {
         user = {
