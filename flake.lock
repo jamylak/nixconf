@@ -282,11 +282,11 @@
     "nvimconf": {
       "flake": false,
       "locked": {
-        "lastModified": 1773907438,
-        "narHash": "sha256-XruDAq8TgOU38FqTCIzQBrNha0HC/Slx27gEQI1d7zc=",
+        "lastModified": 1774509379,
+        "narHash": "sha256-Ea3P9UdmmHZm+hH+xtNCBcHEjLOblA3A2h0tbswBofc=",
         "owner": "jamylak",
         "repo": "nvimconf",
-        "rev": "92178328a129a4867d02b4f9c5de283f1cacd4bf",
+        "rev": "041daa7d7da313a846a4250f2c5246b5fba3d0a4",
         "type": "github"
       },
       "original": {
